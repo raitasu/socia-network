@@ -1,0 +1,12 @@
+.musicTitle {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.audio {
+    margin: 10px 0px 0px 0px;
+    padding: 0px 0px 20px 0px;
+    border-bottom: 2px solid dimgray;
+}

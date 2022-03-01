@@ -1,0 +1,32 @@
+.sidebar {
+    width: 300px;
+    padding: 20px;
+    background-color: darkgray;
+    border-radius: 20px;
+    margin: 0px 10px 0px 0px;
+}
+
+.item {
+    display: block;
+    margin: 0px 0px 10px 0px;
+    padding: 10px;
+    background-color: dimgray;
+    border-radius: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration:none;
+    color: white;
+}
+
+.active {
+    display: block;
+    margin: 0px 0px 10px 0px;
+    padding: 10px;
+    background-color: dimgray;
+    border-radius: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration:none;
+    color: gold;
+    text-decoration: none;
+}

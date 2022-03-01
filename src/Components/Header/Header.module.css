@@ -1,0 +1,10 @@
+.header {
+    padding: 20px;
+    background-color: dimgray;
+    border-radius: 20px;
+    margin: 10px auto;
+}
+
+.logo img {
+    width: 100px;
+}
