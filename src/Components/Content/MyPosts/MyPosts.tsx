@@ -1,9 +1,14 @@
 import React from 'react';
 import Post from "./Post/Post";
 import classes from './MyPosts.module.css'
-import {PropsType} from "../../../index";
+import {PostType} from "../../Redux/State";
 
-const MyPosts = (props:PropsType) => {
+type MyPostsPropsType = {
+    posts:Array<PostType>
+}
+
+
+const MyPosts = (props:MyPostsPropsType) => {
 
     return (
         <div className={classes.posts}>

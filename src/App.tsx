@@ -9,10 +9,13 @@ import News from "./Components/News/News";
 import Music from "./Components/Music/Music";
 import Settings from "./Components/Settings/Settings";
 import {Dialogs} from "./Components/Dialogs/Dialogs";
-import {PropsType} from "./index";
+import {RootStateType} from "./Components/Redux/State";
 
+type AppPropsType = {
+    state: RootStateType
+}
 
-function App(props: PropsType) {
+function App(props: AppPropsType) {
 
     return (
         <BrowserRouter>
@@ -22,8 +25,9 @@ function App(props: PropsType) {
                     <Sidebar/>
                     <div className="page-main">
                         <Routes>
-                            <Route path="profile" element={<Main posts={props.posts}/>}/>
-                            <Route path="dialogs" element={<Dialogs users={props.users} message={props.message}/>}/>
+                            <Route path="profile" element={<Main posts={props.state.profilePage.posts}/>}/>
+                            <Route path="dialogs" element={<Dialogs users={props.state.dialogsPage.users}
+                                                                    message={props.state.dialogsPage.message}/>}/>
                             <Route path="news" element={<News/>}/>
                             <Route path="music" element={<Music/>}/>
                             <Route path="settings" element={<Settings/>}/>

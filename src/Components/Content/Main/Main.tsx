@@ -4,9 +4,13 @@ import HeaderLogo from "./HeaderLogo/HeaderLogo";
 import Form from "./Form/Form";
 import CreatePosts from "./CreatePosts/CreatePosts";
 import classes from './Main.module.css'
-import {PropsType} from "../../../index";
+import {PostType} from "../../Redux/State";
 
-const Main = (props:PropsType) => {
+type MainPropsType = {
+    posts:Array<PostType>
+}
+
+const Main = (props:MainPropsType) => {
 
     return (
         <main className={classes.main} >
