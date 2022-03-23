@@ -9,7 +9,7 @@ type DialogsPropsType = {
     message: Array<MessageType>
 }
 
-export const Dialogs = (props:DialogsPropsType) => {
+export const Dialogs = (props: DialogsPropsType) => {
     return (
         <div className={classes.dialogs}>
             <div className={classes.dialogItems}>

@@ -11,5 +11,9 @@
 }
 .description {
     width: 480px;
-    padding: 20px;
+    padding: 15px;
+}
+.itemName {
+    font-weight: normal;
+    padding-top: 2px;
 }

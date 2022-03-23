@@ -2,13 +2,15 @@ import React from 'react';
 import classes from './Post.module.css'
 import avatar from './avatar-post.png'
 import like from './like.png'
-import {PostType, state} from "../../../Redux/State";
+import {PostType} from "../../../Redux/State";
 
 type PostPropsType = {
-    posts:Array<PostType>
+    posts: Array<PostType>
 }
 
 const Post = (props: PostPropsType) => {
+
+
     const mapperPost = props.posts.map((el) => {
         return (
             <div className={classes.post}>

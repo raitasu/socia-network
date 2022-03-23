@@ -1,18 +1,17 @@
-import classes from "../Content/MyPosts/Post/Post.module.css";
-import avatar from "../Content/MyPosts/Post/avatar-post.png";
-import like from "../Content/MyPosts/Post/like.png";
 import React from "react";
+import {v1} from "uuid";
+import {rerenderEntireTree} from "../../render";
 
 export type UsersType = {
     id: number
     name: string
 }
 export type MessageType = {
-    id: number
+    id: string
     message: string
 }
 export type PostType = {
-    id: number
+    id: string
     message: string
     amountLike: number
 }
@@ -27,14 +26,15 @@ export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
 }
+
 export let state: RootStateType = {
     profilePage: {
         posts: [
-            {id: 1, message: "Hello, how are you?", amountLike: 10},
-            {id: 2, message: "What is the best moto?", amountLike: 7},
-            {id: 3, message: "Harley-Davidson is a top motorcycle!", amountLike: 33},
-            {id: 4, message: "Maybe Yamaha ?", amountLike: 0},
-            {id: 5, message: "No-no-no ))", amountLike: 100}
+            {id: v1(), message: "Hello, how are you?", amountLike: 10},
+            {id: v1(), message: "What is the best moto?", amountLike: 7},
+            {id: v1(), message: "Harley-Davidson is a top motorcycle!", amountLike: 33},
+            {id: v1(), message: "Maybe Yamaha ?", amountLike: 0},
+            {id: v1(), message: "No-no-no ))", amountLike: 100}
         ]
     },
     dialogsPage: {
@@ -47,16 +47,21 @@ export let state: RootStateType = {
             {id: 6, name: 'Pavel'}
         ],
         message: [
-            {id: 1, message: 'Hello'},
-            {id: 2, message: 'How are you?'},
-            {id: 3, message: 'What new?'},
-            {id: 4, message: 'What happening?'},
-            {id: 5, message: 'Yo!'},
-            {id: 6, message: 'Yo!'}
+            {id: v1(), message: 'Hello'},
+            {id: v1(), message: 'How are you?'},
+            {id: v1(), message: 'What new?'},
+            {id: v1(), message: 'What happening?'},
+            {id: v1(), message: 'Yo!'},
+            {id: v1(), message: 'Yo!'}
         ]
     }
 }
 
 
 
+export let addPostState = (title:string) => {
+    let newPost = {id: v1(), message: title , amountLike: 0}
+    state.profilePage.posts.push(newPost)
+    rerenderEntireTree(state)
+}
 

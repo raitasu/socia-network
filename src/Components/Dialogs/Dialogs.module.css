@@ -5,6 +5,7 @@
     border-bottom: 4px solid gray;
     background-color: white;
     border-radius: 10px;
+    justify-content: space-between;
 }
 
 
