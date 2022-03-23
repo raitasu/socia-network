@@ -17,6 +17,7 @@ export type PostType = {
 }
 export type ProfilePageType = {
     posts: Array<PostType>
+    textForTextArea: string
 }
 export type DialogsPageType = {
     users: Array<UsersType>
@@ -35,7 +36,8 @@ export let state: RootStateType = {
             {id: v1(), message: "Harley-Davidson is a top motorcycle!", amountLike: 33},
             {id: v1(), message: "Maybe Yamaha ?", amountLike: 0},
             {id: v1(), message: "No-no-no ))", amountLike: 100}
-        ]
+        ],
+        textForTextArea: ''
     },
     dialogsPage: {
         users: [
@@ -58,10 +60,13 @@ export let state: RootStateType = {
 }
 
 
-
-export let addPostState = (title:string) => {
-    let newPost = {id: v1(), message: title , amountLike: 0}
-    state.profilePage.posts.push(newPost)
+export let addPostState = () => {
+    let newPost = {id: v1(), message: state.profilePage.textForTextArea, amountLike: 0}
+    state.profilePage.posts.unshift(newPost)
+    rerenderEntireTree(state)
+}
+export let updateTextForTextArea = (newNext: string) => {
+    state.profilePage.textForTextArea = newNext
     rerenderEntireTree(state)
 }
 

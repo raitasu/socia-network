@@ -13,7 +13,8 @@ import {RootStateType} from "./Components/Redux/State";
 
 type AppPropsType = {
     state: RootStateType
-    addPost: (title:string) => void
+    addPost: () => void
+    changeTextArea:(text:string) => void
 
 }
 
@@ -27,7 +28,7 @@ function App(props: AppPropsType) {
                 <div className="page-main">
                     <Routes>
                         <Route path="profile"
-                               element={<Main posts={props.state.profilePage.posts} addPost={props.addPost}/>}/>
+                               element={<Main profilePage={props.state.profilePage} addPost={props.addPost} changeTextArea={props.changeTextArea}/>}/>
                         <Route path="dialogs" element={<Dialogs users={props.state.dialogsPage.users}
                                                                 message={props.state.dialogsPage.message}/>}/>
                         <Route path="news" element={<News/>}/>

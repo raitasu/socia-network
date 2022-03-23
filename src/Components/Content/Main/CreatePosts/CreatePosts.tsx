@@ -1,11 +1,13 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import classes from './CreatePosts.module.css'
 import {PostType} from "../../../Redux/State";
 import Post from "../../MyPosts/Post/Post";
 
 type CreatePostsPropsType = {
     posts: Array<PostType>
-    addPost: (title: string) => void
+    textForTextArea: string
+    addPost: () => void
+    changeTextArea: (text: string) => void
 
 }
 
@@ -14,14 +16,18 @@ const CreatePosts = (props: CreatePostsPropsType) => {
     let newPostElement = React.createRef<any>();
 
     const onClickHandler = () => {
-        let text = newPostElement.current.value
-        props.addPost(text)
-        newPostElement.current.value=''
+        props.addPost()
+        props.changeTextArea('')
+    }
+    const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        let newText = e.currentTarget.value
+        props.changeTextArea(newText)
     }
 
     return (
         <div className={classes.create_posts}>
-            <textarea className={classes.textarea}  ref={newPostElement}/>
+            <textarea className={classes.textarea} ref={newPostElement} value={props.textForTextArea}
+                      onChange={onChangeHandler}/>
             <button className={classes.itemButton} onClick={onClickHandler}>Add post</button>
             <button className={classes.itemButton}>Remove</button>
             <div><Post posts={props.posts}/></div>

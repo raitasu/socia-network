@@ -3,11 +3,12 @@ import HeaderLogo from "./HeaderLogo/HeaderLogo";
 import Form from "./Form/Form";
 import CreatePosts from "./CreatePosts/CreatePosts";
 import classes from './Main.module.css'
-import {PostType} from "../../Redux/State";
+import {ProfilePageType} from "../../Redux/State";
 
 type MainPropsType = {
-    posts: Array<PostType>
-    addPost:(title:string)=>void
+    profilePage: ProfilePageType
+    addPost:()=>void
+    changeTextArea:(text:string)=>void
 }
 
 const Main = (props: MainPropsType) => {
@@ -16,7 +17,7 @@ const Main = (props: MainPropsType) => {
         <main className={classes.main}>
             <HeaderLogo/>
             <Form/>
-            <CreatePosts posts={props.posts} addPost={props.addPost}/>
+            <CreatePosts posts={props.profilePage.posts} textForTextArea={props.profilePage.textForTextArea} addPost={props.addPost} changeTextArea={props.changeTextArea}/>
         </main>
     );
 };
