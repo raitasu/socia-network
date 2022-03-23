@@ -1,6 +1,4 @@
-import React from "react";
 import {v1} from "uuid";
-import {rerenderEntireTree} from "../../render";
 
 export type UsersType = {
     id: number
@@ -59,14 +57,20 @@ export let state: RootStateType = {
     }
 }
 
+let rerenderEntireTree = () => {
 
-export let addPostState = () => {
+}
+
+export const addPostState = () => {
     let newPost = {id: v1(), message: state.profilePage.textForTextArea, amountLike: 0}
     state.profilePage.posts.unshift(newPost)
-    rerenderEntireTree(state)
+    rerenderEntireTree()
 }
-export let updateTextForTextArea = (newNext: string) => {
+export const updateTextForTextArea = (newNext: string) => {
     state.profilePage.textForTextArea = newNext
-    rerenderEntireTree(state)
+    rerenderEntireTree()
 }
 
+export const subscribe = (observer: any) => {
+    rerenderEntireTree = observer
+}
