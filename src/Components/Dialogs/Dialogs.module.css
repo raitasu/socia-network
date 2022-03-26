@@ -9,3 +9,11 @@
 }
 
 
+.addMessage {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
+    border-radius: 20px;
+    border-bottom: 4px solid gray;
+    border-top: 4px solid gray;
+}

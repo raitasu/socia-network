@@ -20,11 +20,17 @@ export type ProfilePageType = {
 export type DialogsPageType = {
     users: Array<UsersType>
     message: Array<MessageType>
+    textForMessage: string
 }
 export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
 }
+
+const addPost = 'ADD-POST';
+const updateTextForTextArea = 'UPDATE-TEXT-FOR-TEXT-AREA';
+const addMessage = 'ADD-MESSAGE';
+const updateTextForMessage = 'UPDATE-TEXT-FOR-MESSAGE'
 
 export let store = {
     _state: {
@@ -39,6 +45,7 @@ export let store = {
             textForTextArea: ''
         },
         dialogsPage: {
+            textForMessage: '',
             users: [
                 {id: 1, name: 'Andrey'},
                 {id: 2, name: 'Sveta'},
@@ -55,6 +62,7 @@ export let store = {
                 {id: v1(), message: 'Yo!'},
                 {id: v1(), message: 'Yo!'}
             ]
+
         }
     },
     _callSubscriber() {
@@ -66,26 +74,45 @@ export let store = {
     subscribe(observer: any) {
         this._callSubscriber = observer
     },
-
-    addPostState() {
-        let newPost = {id: v1(), message: this._state.profilePage.textForTextArea, amountLike: 0}
-        this._state.profilePage.posts.unshift(newPost)
-        this._callSubscriber()
-    },
-    updateTextForTextArea(newText: string) {
-        this._state.profilePage.textForTextArea = newText
-        this._callSubscriber()
-    },
     dispatch(action: any) {
-        if (action.type === 'ADD-POST') {
+        if (action.type === addPost) {
             let newPost = {id: v1(), message: this._state.profilePage.textForTextArea, amountLike: 0}
             this._state.profilePage.posts.unshift(newPost)
-            this._state.profilePage.textForTextArea=''
+            this._state.profilePage.textForTextArea = ''
             this._callSubscriber()
-        } else if (action.type === 'UPDATE-TEXT-FOR-TEXT-AREA') {
+        } else if (action.type === updateTextForTextArea) {
             this._state.profilePage.textForTextArea = action.newText
+            this._callSubscriber()
+        } else if (action.type === addMessage) {
+            let newMessage = {id: v1(), message: this._state.dialogsPage.textForMessage}
+            this._state.dialogsPage.message.push(newMessage)
+            this._state.dialogsPage.textForMessage = ''
+            this._callSubscriber()
+        } else if (action.type === updateTextForMessage) {
+            this._state.dialogsPage.textForMessage = action.newMessage
             this._callSubscriber()
         }
     }
 }
-
+export const addPostAC = () => {
+    return {
+        type: addPost
+    }
+}
+export const updateTextForTextAreaAC = (newText: string) => {
+    return {
+        type: updateTextForTextArea,
+        newText: newText
+    }
+}
+export const addMessageAC = () => {
+    return {
+        type: addMessage
+    }
+}
+export const updateTextForMessageAC = (newMessage: string) => {
+    return {
+        type: updateTextForMessage,
+        newMessage: newMessage
+    }
+}

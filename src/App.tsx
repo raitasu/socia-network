@@ -26,9 +26,9 @@ function App(props: AppPropsType) {
                 <div className="page-main">
                     <Routes>
                         <Route path="profile"
-                               element={<Main dispatch={props.dispatch} profilePage={props.state.profilePage} />}/>
-                        <Route path="dialogs" element={<Dialogs users={props.state.dialogsPage.users}
-                                                                message={props.state.dialogsPage.message}/>}/>
+                               element={<Main dispatch={props.dispatch} profilePage={props.state.profilePage}/>}/>
+                        <Route path="dialogs" element={<Dialogs dialogsPage={props.state.dialogsPage}
+                                                                dispatch={props.dispatch}/>}/>
                         <Route path="news" element={<News/>}/>
                         <Route path="music" element={<Music/>}/>
                         <Route path="settings" element={<Settings/>}/>
