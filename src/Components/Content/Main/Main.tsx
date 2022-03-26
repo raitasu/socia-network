@@ -7,8 +7,7 @@ import {ProfilePageType} from "../../Redux/State";
 
 type MainPropsType = {
     profilePage: ProfilePageType
-    addPost:()=>void
-    changeTextArea:(text:string)=>void
+    dispatch: any
 }
 
 const Main = (props: MainPropsType) => {
@@ -17,7 +16,8 @@ const Main = (props: MainPropsType) => {
         <main className={classes.main}>
             <HeaderLogo/>
             <Form/>
-            <CreatePosts posts={props.profilePage.posts} textForTextArea={props.profilePage.textForTextArea} addPost={props.addPost} changeTextArea={props.changeTextArea}/>
+            <CreatePosts dispatch={props.dispatch} posts={props.profilePage.posts}
+                         textForTextArea={props.profilePage.textForTextArea}/>
         </main>
     );
 };

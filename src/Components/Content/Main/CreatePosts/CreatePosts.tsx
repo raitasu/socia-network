@@ -6,22 +6,21 @@ import Post from "../../MyPosts/Post/Post";
 type CreatePostsPropsType = {
     posts: Array<PostType>
     textForTextArea: string
-    addPost: () => void
-    changeTextArea: (text: string) => void
+    dispatch: any
 
 }
 
-const CreatePosts = (props: CreatePostsPropsType) => {
+const  CreatePosts = (props: CreatePostsPropsType) => {
 
     let newPostElement = React.createRef<any>();
 
     const onClickHandler = () => {
-        props.addPost()
-        props.changeTextArea('')
+        props.dispatch({type:'ADD-POST'})
+
     }
     const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let newText = e.currentTarget.value
-        props.changeTextArea(newText)
+        props.dispatch({type:'UPDATE-TEXT-FOR-TEXT-AREA', newText:newText})
     }
 
     return (

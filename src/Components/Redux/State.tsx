@@ -26,7 +26,6 @@ export type RootStateType = {
     dialogsPage: DialogsPageType
 }
 
-
 export let store = {
     _state: {
         profilePage: {
@@ -58,23 +57,35 @@ export let store = {
             ]
         }
     },
-    getState() {
-        return this._state
-    },
     _callSubscriber() {
         console.log('State changed!')
     },
+    getState() {
+        return this._state
+    },
+    subscribe(observer: any) {
+        this._callSubscriber = observer
+    },
+
     addPostState() {
         let newPost = {id: v1(), message: this._state.profilePage.textForTextArea, amountLike: 0}
         this._state.profilePage.posts.unshift(newPost)
         this._callSubscriber()
     },
-    updateTextForTextArea(newNext: string) {
-        this._state.profilePage.textForTextArea = newNext
+    updateTextForTextArea(newText: string) {
+        this._state.profilePage.textForTextArea = newText
         this._callSubscriber()
     },
-    subscribe(observer: any) {
-        this._callSubscriber = observer
+    dispatch(action: any) {
+        if (action.type === 'ADD-POST') {
+            let newPost = {id: v1(), message: this._state.profilePage.textForTextArea, amountLike: 0}
+            this._state.profilePage.posts.unshift(newPost)
+            this._state.profilePage.textForTextArea=''
+            this._callSubscriber()
+        } else if (action.type === 'UPDATE-TEXT-FOR-TEXT-AREA') {
+            this._state.profilePage.textForTextArea = action.newText
+            this._callSubscriber()
+        }
     }
 }
 
