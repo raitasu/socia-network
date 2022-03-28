@@ -26,13 +26,15 @@ export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
 }
+export type StoreType = {
+    _state: RootStateType
+    _callSubscriber: () => void
+    getState: () => RootStateType
+    subscribe: (observer: () => void) => void
+    dispatch: (action: any) => void
+}
 
-const addPost = 'ADD-POST';
-const updateTextForTextArea = 'UPDATE-TEXT-FOR-TEXT-AREA';
-const addMessage = 'ADD-MESSAGE';
-const updateTextForMessage = 'UPDATE-TEXT-FOR-MESSAGE'
-
-export let store = {
+export let store: StoreType = {
     _state: {
         profilePage: {
             posts: [
@@ -71,48 +73,74 @@ export let store = {
     getState() {
         return this._state
     },
-    subscribe(observer: any) {
+    subscribe(observer) {
         this._callSubscriber = observer
     },
-    dispatch(action: any) {
-        if (action.type === addPost) {
+    dispatch(action: ActionType) {
+        if (action.type === "ADD-POST") {
+
             let newPost = {id: v1(), message: this._state.profilePage.textForTextArea, amountLike: 0}
             this._state.profilePage.posts.unshift(newPost)
             this._state.profilePage.textForTextArea = ''
             this._callSubscriber()
-        } else if (action.type === updateTextForTextArea) {
-            this._state.profilePage.textForTextArea = action.newText
+        } else if (action.type === "UPDATE-TEXT-FOR-TEXT-AREA") {
+            this._state.profilePage.textForTextArea = action.payload.newText
             this._callSubscriber()
-        } else if (action.type === addMessage) {
+        } else if (action.type === 'ADD-MESSAGE') {
             let newMessage = {id: v1(), message: this._state.dialogsPage.textForMessage}
             this._state.dialogsPage.message.push(newMessage)
             this._state.dialogsPage.textForMessage = ''
             this._callSubscriber()
-        } else if (action.type === updateTextForMessage) {
-            this._state.dialogsPage.textForMessage = action.newMessage
+        } else if (action.type === 'UPDATE-TEXT-FOR-MESSAGE') {
+            this._state.dialogsPage.textForMessage = action.payload.newMessage
             this._callSubscriber()
         }
     }
 }
-export const addPostAC = () => {
+
+export type ActionType = UpdateTextForTextAreaACType | AddPostACType | AddMessageACType | UpdateTextForMessageAcType;
+
+
+export type UpdateTextForTextAreaACType = {
+    type: 'UPDATE-TEXT-FOR-TEXT-AREA',
+    payload: { newText: string }
+}
+export type AddPostACType = {
+    type: 'ADD-POST'
+}
+export type AddMessageACType = {
+    type: 'ADD-MESSAGE'
+}
+export type UpdateTextForMessageAcType = {
+    type: 'UPDATE-TEXT-FOR-MESSAGE',
+    payload: { newMessage: string }
+
+}
+export const addPostAC = (): AddPostACType => {
     return {
-        type: addPost
+        type: 'ADD-POST'
     }
 }
-export const updateTextForTextAreaAC = (newText: string) => {
+
+export const updateTextForTextAreaAC = (newText: string): UpdateTextForTextAreaACType => {
     return {
-        type: updateTextForTextArea,
-        newText: newText
+        type: 'UPDATE-TEXT-FOR-TEXT-AREA',
+        payload: {newText: newText}
+
     }
 }
-export const addMessageAC = () => {
+
+
+export const addMessageAC = (): AddMessageACType => {
     return {
-        type: addMessage
+        type: 'ADD-MESSAGE'
     }
 }
-export const updateTextForMessageAC = (newMessage: string) => {
+export const updateTextForMessageAC = (newMessage: string): UpdateTextForMessageAcType => {
     return {
-        type: updateTextForMessage,
-        newMessage: newMessage
+        type: 'UPDATE-TEXT-FOR-MESSAGE',
+        payload: {
+            newMessage: newMessage
+        }
     }
 }

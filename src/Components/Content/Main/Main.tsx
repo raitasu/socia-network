@@ -3,11 +3,11 @@ import HeaderLogo from "./HeaderLogo/HeaderLogo";
 import Form from "./Form/Form";
 import CreatePosts from "./CreatePosts/CreatePosts";
 import classes from './Main.module.css'
-import {ProfilePageType} from "../../Redux/State";
+import {ActionType, ProfilePageType} from "../../Redux/State";
 
 type MainPropsType = {
     profilePage: ProfilePageType
-    dispatch: any
+    dispatch:(action:ActionType) =>void
 }
 
 const Main = (props: MainPropsType) => {

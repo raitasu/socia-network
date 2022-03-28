@@ -1,12 +1,12 @@
 import React, {ChangeEvent} from 'react';
 import classes from './CreatePosts.module.css'
-import {addPostAC, PostType, updateTextForTextAreaAC} from "../../../Redux/State";
+import {ActionType, addPostAC, PostType, updateTextForTextAreaAC} from "../../../Redux/State";
 import Post from "../../MyPosts/Post/Post";
 
 type CreatePostsPropsType = {
     posts: Array<PostType>
     textForTextArea: string
-    dispatch: any
+    dispatch:(action:ActionType) =>void
 
 }
 

@@ -2,18 +2,17 @@ import React, {ChangeEvent} from 'react';
 import classes from './Dialogs.module.css'
 import Dialog from "./Dialog";
 import Message from "./Message";
-import {addMessageAC, DialogsPageType, updateTextForMessageAC} from "../Redux/State";
+import {ActionType, addMessageAC, DialogsPageType, updateTextForMessageAC} from "../Redux/State";
 
 type DialogsPropsType = {
     // users: Array<UsersType>,
     // message: Array<MessageType>
     dialogsPage: DialogsPageType,
-    dispatch: any
+    dispatch:(action:ActionType)=>void
 }
 
 export const Dialogs = (props: DialogsPropsType) => {
 
-    let newPostElement = React.createRef<any>();
 
     const onClickHandler = () => {
         props.dispatch(addMessageAC())
@@ -34,7 +33,7 @@ export const Dialogs = (props: DialogsPropsType) => {
                 </div>
 
             </div>
-            <div className={classes.addMessage}><textarea value={props.dialogsPage.textForMessage} onChange={onChangeHandler} ref={newPostElement}/>
+            <div className={classes.addMessage}><textarea value={props.dialogsPage.textForMessage} onChange={onChangeHandler}  placeholder={'Enter new message'}/>
                 <button onClick={onClickHandler}>Add message</button>
             </div>
         </div>
