@@ -101,46 +101,38 @@ export let store: StoreType = {
 export type ActionType = UpdateTextForTextAreaACType | AddPostACType | AddMessageACType | UpdateTextForMessageAcType;
 
 
-export type UpdateTextForTextAreaACType = {
-    type: 'UPDATE-TEXT-FOR-TEXT-AREA',
-    payload: { newText: string }
-}
-export type AddPostACType = {
-    type: 'ADD-POST'
-}
-export type AddMessageACType = {
-    type: 'ADD-MESSAGE'
-}
-export type UpdateTextForMessageAcType = {
-    type: 'UPDATE-TEXT-FOR-MESSAGE',
-    payload: { newMessage: string }
+export type UpdateTextForTextAreaACType = ReturnType<typeof updateTextForTextAreaAC>
 
-}
-export const addPostAC = (): AddPostACType => {
+export type AddPostACType = ReturnType<typeof addPostAC>
+
+export type AddMessageACType = ReturnType<typeof addMessageAC>
+
+export type UpdateTextForMessageAcType = ReturnType<typeof updateTextForMessageAC>
+export const addPostAC = () => {
     return {
         type: 'ADD-POST'
-    }
+    } as const
 }
 
-export const updateTextForTextAreaAC = (newText: string): UpdateTextForTextAreaACType => {
+export const updateTextForTextAreaAC = (newText: string) => {
     return {
         type: 'UPDATE-TEXT-FOR-TEXT-AREA',
-        payload: {newText: newText}
-
-    }
+        payload: {
+            newText: newText
+        }
+    } as const
 }
 
-
-export const addMessageAC = (): AddMessageACType => {
+export const addMessageAC = () => {
     return {
         type: 'ADD-MESSAGE'
-    }
+    } as const
 }
-export const updateTextForMessageAC = (newMessage: string): UpdateTextForMessageAcType => {
+export const updateTextForMessageAC = (newMessage: string) => {
     return {
         type: 'UPDATE-TEXT-FOR-MESSAGE',
         payload: {
             newMessage: newMessage
         }
-    }
+    } as const
 }
