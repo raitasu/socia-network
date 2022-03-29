@@ -1,5 +1,6 @@
 import {v1} from "uuid";
 import profileReducer from "./Profile-reducer";
+import dialogsReducer from "./Dialogs-reducer";
 
 export type UsersType = {
     id: number
@@ -80,18 +81,8 @@ export let store: StoreType = {
     dispatch(action: ActionType) {
 
         this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
         this._callSubscriber()
-        // switch (action.type) {
-        //
-        //     case 'ADD-MESSAGE':
-        //         let newMessage = {id: v1(), message: this._state.dialogsPage.textForMessage}
-        //         this._state.dialogsPage.message.push(newMessage)
-        //         this._state.dialogsPage.textForMessage = ''
-        //         this._callSubscriber()
-        //         break;
-        //     case 'UPDATE-TEXT-FOR-MESSAGE':
-        //         this._state.dialogsPage.textForMessage = action.payload.newMessage
-
 
     }
 
