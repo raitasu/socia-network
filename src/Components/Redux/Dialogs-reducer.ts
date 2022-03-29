@@ -7,12 +7,14 @@ const dialogsReducer = (state: DialogsPageType, action: ActionType) => {
             let newMessage = {id: v1(), message: state.textForMessage}
             state.message.push(newMessage)
             state.textForMessage = ''
-            break;
+            return state
         case 'UPDATE-TEXT-FOR-MESSAGE':
             state.textForMessage = action.payload.newMessage
-            break;
+            return state
+        default:
+            return state
     }
-    return state
+
 }
 
 export default dialogsReducer

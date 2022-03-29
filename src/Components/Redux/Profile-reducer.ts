@@ -7,12 +7,13 @@ export const profileReducer = (state: ProfilePageType, action: ActionType) => {
             let newPost = {id: v1(), message: state.textForTextArea, amountLike: 0}
             state.posts.unshift(newPost)
             state.textForTextArea = ''
-            break;
+            return state
         case "UPDATE-TEXT-FOR-TEXT-AREA":
             state.textForTextArea = action.payload.newText
-            break;
-
+            return state
+        default:
+            return state
     }
-    return state
+
 }
 export default profileReducer
