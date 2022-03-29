@@ -1,4 +1,5 @@
 import {v1} from "uuid";
+import profileReducer from "./Profile-reducer";
 
 export type UsersType = {
     id: number
@@ -77,29 +78,23 @@ export let store: StoreType = {
         this._callSubscriber = observer
     },
     dispatch(action: ActionType) {
-        switch (action.type) {
-            case "ADD-POST":
-                let newPost = {id: v1(), message: this._state.profilePage.textForTextArea, amountLike: 0}
-                this._state.profilePage.posts.unshift(newPost)
-                this._state.profilePage.textForTextArea = ''
-                this._callSubscriber()
-                break;
-            case "UPDATE-TEXT-FOR-TEXT-AREA":
-                this._state.profilePage.textForTextArea = action.payload.newText
-                this._callSubscriber()
-                break;
-            case 'ADD-MESSAGE':
-                let newMessage = {id: v1(), message: this._state.dialogsPage.textForMessage}
-                this._state.dialogsPage.message.push(newMessage)
-                this._state.dialogsPage.textForMessage = ''
-                this._callSubscriber()
-                break;
-            case 'UPDATE-TEXT-FOR-MESSAGE':
-                this._state.dialogsPage.textForMessage = action.payload.newMessage
-                this._callSubscriber()
-                break;
-        }
+
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._callSubscriber()
+        // switch (action.type) {
+        //
+        //     case 'ADD-MESSAGE':
+        //         let newMessage = {id: v1(), message: this._state.dialogsPage.textForMessage}
+        //         this._state.dialogsPage.message.push(newMessage)
+        //         this._state.dialogsPage.textForMessage = ''
+        //         this._callSubscriber()
+        //         break;
+        //     case 'UPDATE-TEXT-FOR-MESSAGE':
+        //         this._state.dialogsPage.textForMessage = action.payload.newMessage
+
+
     }
+
 }
 
 export type ActionType = UpdateTextForTextAreaACType | AddPostACType | AddMessageACType | UpdateTextForMessageAcType;
