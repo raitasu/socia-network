@@ -1,6 +1,6 @@
 import {v1} from "uuid";
-import profileReducer from "./Profile-reducer";
-import dialogsReducer from "./Dialogs-reducer";
+import profileReducer, {addPostAC, updateTextForTextAreaAC} from "./Profile-reducer";
+import dialogsReducer, {addMessageAC, updateTextForMessageAC} from "./Dialogs-reducer";
 
 export type UsersType = {
     id: number
@@ -88,41 +88,14 @@ export let store: StoreType = {
 
 }
 
-export type ActionType = UpdateTextForTextAreaACType | AddPostACType | AddMessageACType | UpdateTextForMessageAcType;
+export type ActionType =
+    ReturnType<typeof updateTextForTextAreaAC>
+    | ReturnType<typeof addPostAC>
+    | ReturnType<typeof addMessageAC>
+    | ReturnType<typeof updateTextForMessageAC>;
 
 
-export type UpdateTextForTextAreaACType = ReturnType<typeof updateTextForTextAreaAC>
 
-export type AddPostACType = ReturnType<typeof addPostAC>
 
-export type AddMessageACType = ReturnType<typeof addMessageAC>
 
-export type UpdateTextForMessageAcType = ReturnType<typeof updateTextForMessageAC>
-export const addPostAC = () => {
-    return {
-        type: 'ADD-POST'
-    } as const
-}
 
-export const updateTextForTextAreaAC = (newText: string) => {
-    return {
-        type: 'UPDATE-TEXT-FOR-TEXT-AREA',
-        payload: {
-            newText: newText
-        }
-    } as const
-}
-
-export const addMessageAC = () => {
-    return {
-        type: 'ADD-MESSAGE'
-    } as const
-}
-export const updateTextForMessageAC = (newMessage: string) => {
-    return {
-        type: 'UPDATE-TEXT-FOR-MESSAGE',
-        payload: {
-            newMessage: newMessage
-        }
-    } as const
-}

@@ -16,4 +16,19 @@ export const profileReducer = (state: ProfilePageType, action: ActionType) => {
     }
 
 }
+export const addPostAC = () => {
+    return {
+        type: 'ADD-POST'
+    } as const
+}
+
+export const updateTextForTextAreaAC = (newText: string) => {
+    return {
+        type: 'UPDATE-TEXT-FOR-TEXT-AREA',
+        payload: {
+            newText: newText
+        }
+    } as const
+}
+
 export default profileReducer

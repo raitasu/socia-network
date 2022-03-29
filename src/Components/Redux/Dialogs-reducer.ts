@@ -16,5 +16,18 @@ const dialogsReducer = (state: DialogsPageType, action: ActionType) => {
     }
 
 }
+export const addMessageAC = () => {
+    return {
+        type: 'ADD-MESSAGE'
+    } as const
+}
+export const updateTextForMessageAC = (newMessage: string) => {
+    return {
+        type: 'UPDATE-TEXT-FOR-MESSAGE',
+        payload: {
+            newMessage: newMessage
+        }
+    } as const
+}
 
 export default dialogsReducer
