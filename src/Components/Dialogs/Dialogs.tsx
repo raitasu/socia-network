@@ -2,25 +2,23 @@ import React, {ChangeEvent} from 'react';
 import classes from './Dialogs.module.css'
 import Dialog from "./Dialog";
 import Message from "./Message";
-import {ActionType, DialogsPageType} from "../Redux/Store";
-import {addMessageAC, updateTextForMessageAC} from "../Redux/Dialogs-reducer";
+import { DialogsPageType} from "../Redux/Store";
 
 type DialogsPropsType = {
-    // users: Array<UsersType>,
-    // message: Array<MessageType>
     dialogsPage: DialogsPageType,
-    dispatch:(action:ActionType)=>void
+    addMessage:()=>void
+    updateTextForMessage:(newMessage:string)=>void
 }
 
 export const Dialogs = (props: DialogsPropsType) => {
 
 
     const onClickHandler = () => {
-        props.dispatch(addMessageAC())
+        props.addMessage()
     }
     const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let newMessage = e.currentTarget.value
-        props.dispatch(updateTextForMessageAC(newMessage))
+        props.updateTextForMessage(newMessage)
     }
 
     return (

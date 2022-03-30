@@ -8,8 +8,8 @@ import Main from "./Components/Content/Main/Main";
 import News from "./Components/News/News";
 import Music from "./Components/Music/Music";
 import Settings from "./Components/Settings/Settings";
-import {Dialogs} from "./Components/Dialogs/Dialogs";
 import {ActionType} from "./Components/Redux/Store";
+import {DialogsContainer} from "./Components/Dialogs/DialogsContainer";
 
 type AppPropsType = {
     store: any
@@ -17,7 +17,6 @@ type AppPropsType = {
 }
 
 function App(props: AppPropsType) {
-    const state = props.store.getState()
 
     return (
         <div className="page">
@@ -28,8 +27,7 @@ function App(props: AppPropsType) {
                     <Routes>
                         <Route path="profile"
                                element={<Main store={props.store}/>}/>
-                        <Route path="dialogs" element={<Dialogs dialogsPage={state.dialogsPage}
-                                                                dispatch={props.dispatch}/>}/>
+                        <Route path="dialogs" element={<DialogsContainer store={props.store}/>}/>
                         <Route path="news" element={<News/>}/>
                         <Route path="music" element={<Music/>}/>
                         <Route path="settings" element={<Settings/>}/>
