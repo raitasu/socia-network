@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Post.module.css'
 import avatar from './avatar-post.png'
 import like from './like.png'
-import {PostType} from "../../../Redux/State";
+import {PostType} from "../../../Redux/Store";
 
 type PostPropsType = {
     posts: Array<PostType>

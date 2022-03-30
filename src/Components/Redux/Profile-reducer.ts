@@ -1,7 +1,19 @@
 import {v1} from "uuid";
-import {ActionType, ProfilePageType} from "./State";
+import {ActionType} from "./Store";
 
-export const profileReducer = (state: ProfilePageType, action: ActionType) => {
+
+let initialState = {
+    posts: [
+        {id: v1(), message: "Hello, how are you?", amountLike: 10},
+        {id: v1(), message: "What is the best moto?", amountLike: 7},
+        {id: v1(), message: "Harley-Davidson is a top motorcycle!", amountLike: 33},
+        {id: v1(), message: "Maybe Yamaha ?", amountLike: 0},
+        {id: v1(), message: "No-no-no ))", amountLike: 100}
+    ],
+    textForTextArea: ''
+}
+
+export const profileReducer = (state = initialState, action: ActionType) => {
     switch (action.type) {
         case "ADD-POST":
             let newPost = {id: v1(), message: state.textForTextArea, amountLike: 0}

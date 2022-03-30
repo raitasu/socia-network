@@ -1,13 +1,11 @@
 import React from 'react';
 import HeaderLogo from "./HeaderLogo/HeaderLogo";
 import Form from "./Form/Form";
-import CreatePosts from "./CreatePosts/CreatePosts";
 import classes from './Main.module.css'
-import {ActionType, ProfilePageType} from "../../Redux/State";
+import CreatePostsContainer from "./CreatePosts/CreatePostsContainer";
 
 type MainPropsType = {
-    profilePage: ProfilePageType
-    dispatch:(action:ActionType) =>void
+    store:any
 }
 
 const Main = (props: MainPropsType) => {
@@ -16,8 +14,7 @@ const Main = (props: MainPropsType) => {
         <main className={classes.main}>
             <HeaderLogo/>
             <Form/>
-            <CreatePosts dispatch={props.dispatch} posts={props.profilePage.posts}
-                         textForTextArea={props.profilePage.textForTextArea}/>
+            <CreatePostsContainer store={props.store}/>
         </main>
     );
 };
