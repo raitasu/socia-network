@@ -1,26 +1,33 @@
 import React from 'react';
 import {addPostAC, updateTextForTextAreaAC} from "../../../Redux/Profile-reducer";
 import CreatePosts from "./CreatePosts";
+import StoreContext from "../../../../StoreContext";
 
-type CreatePostsPropsType = {
-    store: any
+
+
+
+const CreatePostsContainer = () => {
+
+    return <StoreContext.Consumer>{
+        (store) => {
+
+            const state = store.getState()
+
+            const addPost = () => {
+                store.dispatch(addPostAC())
+
+            }
+            const updateTextForTextArea = (newText: string) => {
+                store.dispatch(updateTextForTextAreaAC(newText))
+            }
+
+            return <CreatePosts posts={state.profilePage.posts}
+                                textForTextArea={state.profilePage.textForTextArea}
+                                addPost={addPost} updateTextForTextArea={updateTextForTextArea}/>
+        }
+    }
+    </StoreContext.Consumer>;
+
 }
-
-
-const CreatePostsContainer = (props: CreatePostsPropsType) => {
-
-    const state = props.store.getState()
-
-
-    const addPost = () => {
-        props.store.dispatch(addPostAC())
-
-    }
-    const updateTextForTextArea = (newText:string) => {
-        props.store.dispatch(updateTextForTextAreaAC(newText))
-    }
-
-    return (<CreatePosts posts={state.profilePage.posts} textForTextArea={state.profilePage.textForTextArea} addPost={addPost} updateTextForTextArea={updateTextForTextArea} />);
-};
 
 export default CreatePostsContainer;
