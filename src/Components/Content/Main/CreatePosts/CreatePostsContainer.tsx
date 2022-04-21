@@ -4,8 +4,6 @@ import CreatePosts from "./CreatePosts";
 import StoreContext from "../../../../StoreContext";
 
 
-
-
 const CreatePostsContainer = () => {
 
     return <StoreContext.Consumer>{

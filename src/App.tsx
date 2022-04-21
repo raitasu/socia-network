@@ -11,7 +11,6 @@ import Settings from "./Components/Settings/Settings";
 import {DialogsContainer} from "./Components/Dialogs/DialogsContainer";
 
 
-
 function App() {
 
     return (
@@ -22,8 +21,8 @@ function App() {
                 <div className="page-main">
                     <Routes>
                         <Route path="profile"
-                               element={<Main />}/>
-                        <Route path="dialogs" element={<DialogsContainer />}/>
+                               element={<Main/>}/>
+                        <Route path="dialogs" element={<DialogsContainer/>}/>
                         <Route path="news" element={<News/>}/>
                         <Route path="music" element={<Music/>}/>
                         <Route path="settings" element={<Settings/>}/>

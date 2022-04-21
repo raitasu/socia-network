@@ -4,7 +4,6 @@ import {Dialogs} from "./Dialogs";
 import StoreContext from "../../StoreContext";
 
 
-
 export const DialogsContainer = () => {
 
 

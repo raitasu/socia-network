@@ -5,14 +5,13 @@ import classes from './Main.module.css'
 import CreatePostsContainer from "./CreatePosts/CreatePostsContainer";
 
 
-
 const Main = () => {
 
     return (
         <main className={classes.main}>
             <HeaderLogo/>
             <Form/>
-            <CreatePostsContainer  />
+            <CreatePostsContainer/>
         </main>
     );
 };
