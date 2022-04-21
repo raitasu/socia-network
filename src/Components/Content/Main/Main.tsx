@@ -3,9 +3,10 @@ import HeaderLogo from "./HeaderLogo/HeaderLogo";
 import Form from "./Form/Form";
 import classes from './Main.module.css'
 import CreatePostsContainer from "./CreatePosts/CreatePostsContainer";
+import {StoreType} from "../../Redux/Store";
 
 type MainPropsType = {
-    store:any
+    store:StoreType
 }
 
 const Main = (props: MainPropsType) => {

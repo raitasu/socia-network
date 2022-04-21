@@ -13,7 +13,6 @@ let rerenderEntireTree = () => {
             <BrowserRouter>
                 <App store={store} dispatch={store.dispatch.bind(store)}/>
             </BrowserRouter>
-
         </React.StrictMode>,
         document.getElementById('root')
     );
