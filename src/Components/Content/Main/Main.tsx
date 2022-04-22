@@ -11,7 +11,7 @@ const Main = () => {
         <main className={classes.main}>
             <HeaderLogo/>
             <Form/>
-            <CreatePostsContainer/>
+            <CreatePostsContainer />
         </main>
     );
 };
