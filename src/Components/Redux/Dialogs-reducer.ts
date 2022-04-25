@@ -29,10 +29,10 @@ const dialogsReducer = (state = initialState, action: ActionType) => {
             let newMessage = {id: v1(), message: state.textForMessage}
             state.message.push(newMessage)
             state.textForMessage = ''
-            return state
+            return {...state, newMessage}
         case 'UPDATE-TEXT-FOR-MESSAGE':
-            state.textForMessage = action.payload.newMessage
-            return state
+            // state.textForMessage = action.payload.newMessage
+            return {...state, textForMessage: action.payload.newMessage }
         default:
             return state
     }
