@@ -17,12 +17,16 @@ export const profileReducer = (state = initialState, action: ActionType) => {
     switch (action.type) {
         case "ADD-POST":
             let newPost = {id: v1(), message: state.textForTextArea, amountLike: 0}
-            state.posts.unshift(newPost)
-            state.textForTextArea = ''
-            return {...state, newPost}
-        case "UPDATE-TEXT-FOR-TEXT-AREA":
-            state.textForTextArea = action.payload.newText
-            return {...state, textForTextArea: action.payload.newText }
+            let stateCopy = {...state}
+            stateCopy.posts = [...state.posts]
+            stateCopy.posts.unshift(newPost)
+            stateCopy.textForTextArea = ''
+            return stateCopy
+        case "UPDATE-TEXT-FOR-TEXT-AREA": {
+            let stateCopy = {...state}
+            stateCopy.textForTextArea = action.payload.newText
+            return stateCopy
+        }
         default:
             return state
     }
