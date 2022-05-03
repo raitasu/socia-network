@@ -3,7 +3,6 @@ import {ActionType} from "./Store";
 
 
 let initialState = {
-    textForMessage: '',
     users: [
         {id: 1, name: 'Andrey'},
         {id: 2, name: 'Sveta'},
@@ -19,7 +18,8 @@ let initialState = {
         {id: v1(), message: 'What happening?'},
         {id: v1(), message: 'Yo!'},
         {id: v1(), message: 'Yo!'}
-    ]
+    ],
+    textForMessage: ''
 
 }
 
@@ -27,14 +27,11 @@ const dialogsReducer = (state = initialState, action: ActionType) => {
     switch (action.type) {
         case 'ADD-MESSAGE':
             let newMessage = {id: v1(), message: state.textForMessage}
-            let stateCopy = {...state}
-            stateCopy.message = [...state.message]
-            stateCopy.message.push(newMessage)
-            stateCopy.textForMessage = ''
-            return stateCopy
+            // stateCopy.message.push(newMessage)
+            return {...state, message: [...state.message, newMessage], textForMessage: ''}
         case 'UPDATE-TEXT-FOR-MESSAGE':
             // state.textForMessage = action.payload.newMessage
-            return {...state, textForMessage: action.payload.newMessage }
+            return {...state, textForMessage: action.payload.newMessage}
         default:
             return state
     }

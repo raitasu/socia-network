@@ -9,6 +9,7 @@ import News from "./Components/News/News";
 import Music from "./Components/Music/Music";
 import Settings from "./Components/Settings/Settings";
 import {DialogsContainer} from "./Components/Dialogs/DialogsContainer";
+import Users from "./Components/Users/Users";
 
 
 function App() {
@@ -20,12 +21,12 @@ function App() {
                 <Sidebar/>
                 <div className="page-main">
                     <Routes>
-                        <Route path="profile"
-                               element={<Main/>}/>
+                        <Route path="profile" element={<Main/>}/>
                         <Route path="dialogs" element={<DialogsContainer/>}/>
                         <Route path="news" element={<News/>}/>
                         <Route path="music" element={<Music/>}/>
                         <Route path="settings" element={<Settings/>}/>
+                        <Route path="users" element={<Users/>}/>
                     </Routes>
                 </div>
             </div>
