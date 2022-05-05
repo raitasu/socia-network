@@ -1,7 +1,19 @@
 import {v1} from "uuid";
 import profileReducer, {addPostAC, updateTextForTextAreaAC} from "./Profile-reducer";
 import dialogsReducer, {addMessageAC, updateTextForMessageAC} from "./Dialogs-reducer";
+import {followAC, unfollowAC} from "./Users-reducer";
 
+export type LocationType = {
+    country: string
+    city: string
+}
+export type FriendsType = {
+    id: string
+    fullName: string
+    status: string
+    location: LocationType
+    followed: boolean
+}
 export type UsersType = {
     id: number
     name: string
@@ -19,6 +31,9 @@ export type ProfilePageType = {
     posts: Array<PostType>
     textForTextArea: string
 }
+export type UsersPageType = {
+    users: Array<FriendsType>
+}
 export type DialogsPageType = {
     users: Array<UsersType>
     message: Array<MessageType>
@@ -27,6 +42,7 @@ export type DialogsPageType = {
 export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
+    usersPage: UsersPageType
 }
 export type StoreType = {
     _state: RootStateType
@@ -67,7 +83,52 @@ export let store: StoreType = {
                 {id: v1(), message: 'Yo!'}
             ]
 
+        },
+        usersPage: {
+            users: [
+                {
+                    id: v1(),
+                    fullName: 'Pavel.B',
+                    status: 'Sex, drugs and alcohol',
+                    location: {
+                        country: 'Belarus',
+                        city: 'Minsk'
+                    },
+                    followed: true
+                },
+                {
+                    id: v1(),
+                    fullName: 'Vladislav.D',
+                    status: 'Dota 2 is the best game in the world',
+                    location: {
+                        country: 'Georgia',
+                        city: 'Tbilisi'
+                    },
+                    followed: true
+                },
+                {
+                    id: v1(), fullName: 'Nikolay.H',
+                    status: 'I am sad',
+                    location: {
+                        country: 'Russia',
+                        city: 'Moscow'
+                    },
+                    followed: false
+                },
+                {
+                    id: v1(),
+                    fullName: 'Elizaveta.R',
+                    status: "Let's go my friends!",
+                    location: {
+                        country: 'Ukraine',
+                        city: 'Kiev'
+                    },
+                    followed: false
+                },
+            ]
+
         }
+
     },
     _callSubscriber() {
         console.log('State changed!')
@@ -92,7 +153,9 @@ export type ActionType =
     ReturnType<typeof updateTextForTextAreaAC>
     | ReturnType<typeof addPostAC>
     | ReturnType<typeof addMessageAC>
-    | ReturnType<typeof updateTextForMessageAC>;
+    | ReturnType<typeof updateTextForMessageAC>
+    | ReturnType<typeof followAC>
+    | ReturnType<typeof unfollowAC>
 
 
 
