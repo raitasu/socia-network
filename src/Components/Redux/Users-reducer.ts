@@ -49,10 +49,17 @@ let initialState = {
 
 export const usersReducer = (state = initialState, action: ActionType) => {
     switch (action.type) {
-        case 'FOLLOW':
-            return state.users.map(u=>action.userID===u.id ? {...u, status: !u.status}: '')
-        case 'UNFOLLOW':
-            return state
+        case 'TOGGLE-FOLLOW':
+            debugger
+            return {
+
+                ...state,
+                users: [...state.users.map(u => u.id === action.payload.userID ? {...u, followed: !u.followed} : '')]
+            }
+        case "SET-USERS":
+            return {
+                ...state, users: [...state.users, ...action.users]
+            }
         default:
             return state
 
@@ -60,15 +67,18 @@ export const usersReducer = (state = initialState, action: ActionType) => {
 }
 
 
-export const followAC = (ID:string) => {
+export const toggleFollowAC = (userID: string) => {
+    debugger
     return {
-        type: 'FOLLOW',
-        userID: ID
+        type: 'TOGGLE-FOLLOW',
+        payload: {
+            userID: userID
+        }
     } as const
 }
-export const unfollowAC = (ID:string) => {
+export const setUsersAC = (users: any) => {
     return {
-        type: 'UNFOLLOW',
-        userID: ID
+        type: 'SET-USERS',
+        users: users
     } as const
 }

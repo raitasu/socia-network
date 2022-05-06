@@ -1,7 +1,7 @@
 import {v1} from "uuid";
 import profileReducer, {addPostAC, updateTextForTextAreaAC} from "./Profile-reducer";
 import dialogsReducer, {addMessageAC, updateTextForMessageAC} from "./Dialogs-reducer";
-import {followAC, unfollowAC} from "./Users-reducer";
+import { setUsersAC, toggleFollowAC} from "./Users-reducer";
 
 export type LocationType = {
     country: string
@@ -154,8 +154,8 @@ export type ActionType =
     | ReturnType<typeof addPostAC>
     | ReturnType<typeof addMessageAC>
     | ReturnType<typeof updateTextForMessageAC>
-    | ReturnType<typeof followAC>
-    | ReturnType<typeof unfollowAC>
+    | ReturnType<typeof toggleFollowAC>
+    | ReturnType<typeof setUsersAC>
 
 
 
