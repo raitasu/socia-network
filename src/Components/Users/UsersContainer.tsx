@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Users from "./Users";
-import {ActionType, RootStateType} from "../Redux/Store";
+import {ActionType, FriendsType, RootStateType} from "../Redux/Store";
 import {setUsersAC, toggleFollowAC} from "../Redux/Users-reducer";
 
 let mapStateToProps = (state: RootStateType) => {
@@ -16,7 +16,7 @@ let mapDispatchToProps = (dispatch: (action: ActionType) => void) => {
         toggleFollow: (userID: string) => {
             dispatch(toggleFollowAC(userID))
         },
-        setUsers: (users: any) => {
+        setUsers: (users: Array<FriendsType>) => {
             dispatch(setUsersAC(users))
         }
     }

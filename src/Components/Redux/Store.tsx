@@ -9,10 +9,11 @@ export type LocationType = {
 }
 export type FriendsType = {
     id: string
-    fullName: string
+    name: string
     status: string
     location: LocationType
     followed: boolean
+    photos: any
 }
 export type UsersType = {
     id: number
@@ -88,42 +89,46 @@ export let store: StoreType = {
             users: [
                 {
                     id: v1(),
-                    fullName: 'Pavel.B',
+                    name: 'Pavel.B',
                     status: 'Sex, drugs and alcohol',
                     location: {
                         country: 'Belarus',
                         city: 'Minsk'
                     },
-                    followed: true
+                    followed: true,
+                    photos: {}
                 },
                 {
                     id: v1(),
-                    fullName: 'Vladislav.D',
+                    name: 'Vladislav.D',
                     status: 'Dota 2 is the best game in the world',
                     location: {
                         country: 'Georgia',
                         city: 'Tbilisi'
                     },
-                    followed: true
+                    followed: true,
+                    photos: {}
                 },
                 {
-                    id: v1(), fullName: 'Nikolay.H',
+                    id: v1(), name: 'Nikolay.H',
                     status: 'I am sad',
                     location: {
                         country: 'Russia',
                         city: 'Moscow'
                     },
-                    followed: false
+                    followed: false,
+                    photos: {}
                 },
                 {
                     id: v1(),
-                    fullName: 'Elizaveta.R',
+                    name: 'Elizaveta.R',
                     status: "Let's go my friends!",
                     location: {
                         country: 'Ukraine',
                         city: 'Kiev'
                     },
-                    followed: false
+                    followed: false,
+                    photos: {}
                 },
             ]
 

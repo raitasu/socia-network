@@ -1,0 +1,18 @@
+.post {
+    display: flex;
+    margin: 5px;
+    padding: 20px;
+    border-bottom: 4px solid gray;
+    background-color: white;
+    border-radius: 10px;
+}
+.postImg{
+    width: 80px;
+    border-radius: 50px;
+    box-shadow: 2px 5px gray;
+}
+
+.description_post {
+    width: 500px;
+    padding: 30px;
+}
