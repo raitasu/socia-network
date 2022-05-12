@@ -2,11 +2,15 @@ import React from 'react';
 import classes from './Post.module.css'
 import avatar from './avatar-post.png'
 import like from './like-removebg-preview.png'
-import {PostType} from "../../../Redux/Store";
 
 type PostPropsType = {
     posts: Array<PostType>
 }
+export type PostType = {
+     id: string
+     message: string
+     amountLike: number
+ }
 
 const Post = (props: PostPropsType) => {
 

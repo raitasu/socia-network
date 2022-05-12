@@ -1,9 +1,9 @@
 import React from 'react';
-import {FriendsType, UsersPageType} from "../Redux/Store";
 import avatar from './../Content/MyPosts/Post/avatar-post.png'
 import classes from './Users.module.css'
 import {v1} from "uuid";
 import axios from "axios";
+import {FriendsType, UsersPageType} from "./UsersContainer";
 
 export type UsersType = {
     usersPage: UsersPageType
@@ -14,14 +14,18 @@ export type UsersType = {
 
 const Users = (props: UsersType) => {
 
-
-    if (props.usersPage.users.length === 0) {
+    const getUsers = () => {
+        if (props.usersPage.users.length === 0) {
         axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response=>props.setUsers(response.data.items))
+    }
     }
 
 
+
+
     return (
-        <>
+        <div>
+            <button onClick={getUsers}>Get users</button>
             {
 
                 props.usersPage.users.map(user => <div key={user.id}>
@@ -46,7 +50,7 @@ const Users = (props: UsersType) => {
                     </div>
                 </div>)
             }
-        </>
+        </div>
     );
 };
 

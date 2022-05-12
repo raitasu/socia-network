@@ -1,10 +1,10 @@
 import React from 'react';
 import classes from './Dialog.module.css';
 import {NavLink} from "react-router-dom";
-import {UsersType} from "../Redux/Store";
+import {UserType} from "./DialogsContainer";
 
 type DialogPropsType = {
-    users:Array<UsersType>
+    users:Array<UserType>
 
 }
 
