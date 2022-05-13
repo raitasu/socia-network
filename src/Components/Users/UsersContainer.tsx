@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from "react-redux";
-import Users from "./Users";
 import {ActionType} from "../Redux/Store";
 import {setUsersAC, toggleFollowAC} from "../Redux/Users-reducer";
 import {AppStateType} from "../Redux/Redux-store";
+import {Users} from "./Users";
 
 export type UsersPageType = {
     users: Array<FriendsType>
