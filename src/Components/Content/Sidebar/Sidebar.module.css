@@ -3,12 +3,12 @@
     padding: 20px;
     background-color: darkgray;
     border-radius: 20px;
-    margin: 0px 10px 0px 0px;
+    margin: 0 10px 0 0;
 }
 
 .item {
     display: block;
-    margin: 0px 0px 10px 0px;
+    margin: 0 0 10px 0;
     padding: 10px;
     background-color: dimgray;
     border-radius: 15px;
@@ -20,7 +20,7 @@
 
 .active {
     display: block;
-    margin: 0px 0px 10px 0px;
+    margin: 0 0 10px 0;
     padding: 10px;
     background-color: dimgray;
     border-radius: 15px;
@@ -28,5 +28,15 @@
     font-weight: bold;
     text-decoration:none;
     color: gold;
-    text-decoration: none;
+}
+
+.friends {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.logo {
+    width: 60px;
+    border-radius: 50px;
+    box-shadow: 2px 5px gray;
 }

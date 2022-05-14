@@ -4,11 +4,10 @@ import Post from "../../MyPosts/Post/Post";
 import {ProfilePageType} from "./CreatePostsContainer";
 
 type CreatePostsPropsType = {
-    profilePage:ProfilePageType
+    profilePage: ProfilePageType
     updateTextForTextArea: (newText: string) => void
     addPost: () => void
 }
-
 
 
 const CreatePosts = (props: CreatePostsPropsType) => {
@@ -36,3 +35,5 @@ const CreatePosts = (props: CreatePostsPropsType) => {
 };
 
 export default CreatePosts;
+
+
