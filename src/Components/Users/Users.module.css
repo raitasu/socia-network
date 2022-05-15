@@ -16,3 +16,18 @@
     width: 500px;
     padding: 30px;
 }
+.selected {
+    display: flex;
+    width: 150px;
+    margin: 0 5px 20px 20px;
+    justify-content: space-evenly;
+}
+
+.selectedPage {
+    border: 1px solid black;
+    font-weight: bold;
+    background-color: gainsboro;
+    border-radius: 5px;
+    margin: 0 15px 0 0;
+    padding: 5px;
+}

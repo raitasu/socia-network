@@ -24,6 +24,15 @@ export class Users extends React.Component<UsersType> {
 
     render = () => {
         return <div>
+            <div className={classes.selected}>
+                <span className={classes.selectedPage}>1</span>
+                <span className={classes.selectedPage}>2</span>
+                <span className={classes.selectedPage}>3</span>
+                <span className={classes.selectedPage}>4</span>
+                <span className={classes.selectedPage}>5</span>
+            </div>
+
+
             {
                 this.props.usersPage.users.map(user => <div key={user.id}>
                     <div className={classes.post}>
