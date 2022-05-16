@@ -8,6 +8,8 @@ export type UsersType = {
     usersPage: UsersPageType
     toggleFollow: (userID: string) => void
     setUsers: (users: Array<FriendsType>) => void
+    totalUsersCount:number
+    pageSize:number
 }
 
 export class Users extends React.Component<UsersType> {
@@ -23,13 +25,21 @@ export class Users extends React.Component<UsersType> {
     }
 
     render = () => {
+
+        let pagesCount = this.props.totalUsersCount / this.props.pageSize
+        let pages = []
+        for(let i=1; i <= pagesCount; i++) {
+            pages.push(i)
+        }
+
         return <div>
             <div className={classes.selected}>
-                <span className={classes.selectedPage}>1</span>
-                <span className={classes.selectedPage}>2</span>
-                <span className={classes.selectedPage}>3</span>
-                <span className={classes.selectedPage}>4</span>
-                <span className={classes.selectedPage}>5</span>
+
+                {
+
+                    pages.map(p=><span className={classes.selectedPage}>{p}</span>)
+                }
+
             </div>
 
 

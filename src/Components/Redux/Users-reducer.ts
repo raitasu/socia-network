@@ -4,7 +4,10 @@ import {FriendsType} from "../Users/UsersContainer";
 
 
 let initialState:InitialStateType = {
-    users: []
+    users: [],
+    pageSize: 5,
+    totalUsersCount: 20,
+    currentPage:1
 }
 // {
 //     id: v1(),
@@ -52,6 +55,9 @@ let initialState:InitialStateType = {
 
 type InitialStateType = {
     users: Array<FriendsType>
+    pageSize: number
+    totalUsersCount: number
+    currentPage: number
 }
 export const usersReducer = (state = initialState, action: ActionType):InitialStateType => {
     switch (action.type) {

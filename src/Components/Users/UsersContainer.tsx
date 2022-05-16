@@ -23,6 +23,10 @@ export type FriendsType = {
 
 type MapStateToPropsType = {
     usersPage: UsersPageType
+    pageSize:number
+    totalUsersCount:number
+    currentPage: number
+
 }
 type MapDispatchToPropsType = {
     toggleFollow: (userID: string) => void,
@@ -32,7 +36,11 @@ type MapDispatchToPropsType = {
 
 let mapStateToProps = (state: AppStateType):MapStateToPropsType => {
     return {
-        usersPage: state.usersPage
+        usersPage: state.usersPage,
+        pageSize: state.usersPage.pageSize,
+        totalUsersCount: state.usersPage.totalUsersCount,
+        currentPage: state.usersPage.currentPage
+
     }
 }
 
