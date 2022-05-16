@@ -1,5 +1,5 @@
 import {v1} from "uuid";
-import {ActionType} from "./Store";
+import {ActionType} from "./Redux-store";
 
 
 let initialState = {

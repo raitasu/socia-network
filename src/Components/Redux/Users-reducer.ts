@@ -1,13 +1,12 @@
-import {ActionType} from "./Store";
-import {v1} from "uuid";
 import {FriendsType} from "../Users/UsersContainer";
+import {ActionType} from "./Redux-store";
 
 
 let initialState:InitialStateType = {
     users: [],
-    pageSize: 5,
-    totalUsersCount: 20,
-    currentPage:1
+    pageSize: 50,
+    totalUsersCount: 0,
+    currentPage: 1
 }
 // {
 //     id: v1(),
@@ -72,7 +71,11 @@ export const usersReducer = (state = initialState, action: ActionType):InitialSt
                 // @ts-ignore
                 users: state.users.map(u => u.id === action.payload.userID ? {...u, followed: !u.followed} : u)
             }
+        case "SET-CURRENT-PAGE":
+            return {...state, currentPage: action.payload.currentPage }
 
+        case "SET-TOTAL-USERS-COUNT":
+            return {...state, totalUsersCount: action.payload.totalCount}
         default:
             return state
 
@@ -92,5 +95,21 @@ export const setUsersAC = (users: Array<FriendsType>) => {
     return {
         type: 'SET-USERS',
         users: users
+    } as const
+}
+export const setTotalUsersCountAC = (totalCount:number) => {
+    return {
+        type: 'SET-TOTAL-USERS-COUNT',
+        payload: {
+            totalCount: totalCount
+        }
+    } as const
+}
+export const setCurrentPageAC = (currentPage:number) => {
+    return {
+        type: 'SET-CURRENT-PAGE',
+        payload: {
+            currentPage: currentPage
+        }
     } as const
 }

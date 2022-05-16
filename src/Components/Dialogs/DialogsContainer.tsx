@@ -2,8 +2,7 @@ import React from 'react';
 import {addMessageAC, updateTextForMessageAC} from "../Redux/Dialogs-reducer";
 import {Dialogs} from "./Dialogs";
 import {connect} from "react-redux"
-import {ActionType} from "../Redux/Store";
-import {AppStateType} from "../Redux/Redux-store";
+import {ActionType, AppStateType} from "../Redux/Redux-store";
 
 export type DialogsPageType = {
      users: Array<UserType>

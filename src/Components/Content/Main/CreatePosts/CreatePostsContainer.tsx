@@ -1,9 +1,8 @@
 import React from 'react';
 import {addPostAC, updateTextForTextAreaAC} from "../../../Redux/Profile-reducer";
 import CreatePosts from "./CreatePosts";
-import {ActionType} from "../../../Redux/Store";
 import {connect} from "react-redux"
-import {AppStateType} from "../../../Redux/Redux-store";
+import {ActionType, AppStateType} from "../../../Redux/Redux-store";
 import {PostType} from "../../MyPosts/Post/Post";
 
 export type ProfilePageType = {

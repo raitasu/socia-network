@@ -25,7 +25,15 @@
 
 .selectedPage {
 
+    border: 1px solid black;
+    background-color: gainsboro;
+    border-radius: 5px;
+    margin: 0 15px 0 0;
+    padding: 5px;
+}
+.selectedCurrentPage {
     font-weight: bold;
+
     border: 1px solid black;
     background-color: gainsboro;
     border-radius: 5px;
