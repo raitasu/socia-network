@@ -13,8 +13,6 @@ import {UsersContainer} from "./Components/Users/UsersContainer";
 
 
 function App() {
-
-
     return (
         <div className="page">
             <Header/>
@@ -28,7 +26,6 @@ function App() {
                         <Route path="music" element={<Music/>}/>
                         <Route path="settings" element={<Settings/>}/>
                         <Route path="users" element={<UsersContainer/>}/>
-
                     </Routes>
                 </div>
             </div>
