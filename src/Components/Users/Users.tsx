@@ -2,6 +2,7 @@ import React from 'react';
 import classes from "./Users.module.css";
 import avatar from "../Content/MyPosts/Post/avatar-post.png";
 import {UsersPageType} from "./UsersContainer";
+import {AppStateType, store} from "../Redux/Redux-store";
 
 export type UsersType = {
     usersPage: UsersPageType
@@ -12,8 +13,6 @@ export type UsersType = {
     onPageChanged:(pageNumber: number)=>void
 }
 
-
-
 const Users = (props:UsersType) => {
 
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
@@ -21,7 +20,6 @@ const Users = (props:UsersType) => {
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
     }
-
 
     return (
         <div>

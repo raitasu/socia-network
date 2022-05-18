@@ -11,6 +11,7 @@ import {ActionType, AppStateType} from "../Redux/Redux-store";
 import axios from "axios";
 import Users from "./Users";
 import loadingLogo from './333 (1).gif'
+import Preloader from "../Common/Preloader/Preloader";
 
 export type UsersPageType = {
     users: Array<FriendsType>
@@ -81,7 +82,7 @@ export class UsersAPIComponent extends React.Component<UsersAPIType> {
     render = () => {
 
         return <>
-            {this.props.isFetching ? <img src={loadingLogo} alt={'Loading..'}/> :
+            {this.props.isFetching ? <Preloader/> :
                 <Users usersPage={this.props.usersPage}
                        onPageChanged={this.onPageChanged}
                        totalUsersCount={this.props.totalUsersCount}
