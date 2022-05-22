@@ -2,7 +2,7 @@ import React from 'react';
 import classes from "./Users.module.css";
 import avatar from "../Content/MyPosts/Post/avatar-post.png";
 import {UsersPageType} from "./UsersContainer";
-import {AppStateType, store} from "../Redux/Redux-store";
+import {NavLink} from "react-router-dom";
 
 export type UsersType = {
     usersPage: UsersPageType
@@ -10,10 +10,10 @@ export type UsersType = {
     totalUsersCount: number
     pageSize: number
     currentPage: number
-    onPageChanged:(pageNumber: number)=>void
+    onPageChanged: (pageNumber: number) => void
 }
 
-const Users = (props:UsersType) => {
+const Users = (props: UsersType) => {
 
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
     let pages = []
@@ -37,8 +37,11 @@ const Users = (props:UsersType) => {
                 props.usersPage.users.map(user => <div key={user.id}>
                     <div className={classes.post}>
                         <div>
-                            <img className={classes.postImg}
-                                 src={user.photos.small != null ? user.photos.small : avatar} alt="avatar_users"/>
+                            <NavLink to={'./../Profile/' + user.id}>
+                                <img className={classes.postImg}
+                                     src={user.photos.small != null ? user.photos.small : avatar}
+                                     alt="avatar_users"/>
+                            </NavLink>
                             <div>
                                 {user.followed ? <button onClick={() => {
                                         props.toggleFollow(user.id)

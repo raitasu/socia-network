@@ -10,7 +10,8 @@ let initialState = {
         {id: v1(), message: "Maybe Yamaha ?", amountLike: 0},
         {id: v1(), message: "No-no-no ))", amountLike: 100}
     ],
-    textForTextArea: ''
+    textForTextArea: '',
+    profile: null
 }
 
 export const profileReducer = (state = initialState, action: ActionType) => {
@@ -23,6 +24,9 @@ export const profileReducer = (state = initialState, action: ActionType) => {
             stateCopy.textForTextArea = action.payload.newText
             return stateCopy
         }
+        case "SET-USER-PROFILE":
+            debugger
+            return {...state, profile: action.payload.profile}
         default:
             return state
     }
@@ -42,5 +46,16 @@ export const updateTextForTextAreaAC = (newText: string) => {
         }
     } as const
 }
+export const setUserProfileAC = (profile:any) => {
+    return {
+        type: 'SET-USER-PROFILE',
+        payload: {
+            profile: profile
+        }
+    } as const
+}
+
+
+
 
 export default profileReducer

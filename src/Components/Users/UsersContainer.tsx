@@ -7,10 +7,9 @@ import {
     toggleFollowAC,
     toggleIsFetchingAC
 } from "../Redux/Users-reducer";
-import {ActionType, AppStateType} from "../Redux/Redux-store";
+import { AppStateType} from "../Redux/Redux-store";
 import axios from "axios";
 import Users from "./Users";
-import loadingLogo from './333 (1).gif'
 import Preloader from "../Common/Preloader/Preloader";
 
 export type UsersPageType = {
@@ -37,14 +36,14 @@ type MapStateToPropsType = {
     isFetching: boolean
 
 }
-type MapDispatchToPropsType = {
-    toggleFollow: (userID: string) => void,
-    setUsers: (users: Array<FriendsType>) => void
-    setCurrentPage: (currentPage: number) => void
-    setTotalUsersCount: (totalCount: number) => void
-    toggleIsFetching: (isFetching: boolean) => void
-
-}
+// type MapDispatchToPropsType = {
+//     toggleFollow: (userID: string) => void,
+//     setUsers: (users: Array<FriendsType>) => void
+//     setCurrentPage: (currentPage: number) => void
+//     setTotalUsersCount: (totalCount: number) => void
+//     toggleIsFetching: (isFetching: boolean) => void
+//
+// }
 export type UsersAPIType = {
     usersPage: UsersPageType
     toggleFollow: (userID: string) => void
