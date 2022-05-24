@@ -12,7 +12,6 @@ const Form = (props:FormType) => {
         return <><Preloader/></>
     }
 
-
     return (
         <div className={classes.form}>
             <img src={props.profile.photos.small !== null ? props.profile.photos.small : 'https://cdn1.ozone.ru/s3/multimedia-n/c1200/6193427267.jpg'} alt='avatar'/>
