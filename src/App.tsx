@@ -7,9 +7,9 @@ import Sidebar from "./Components/Content/Sidebar/Sidebar";
 import News from "./Components/News/News";
 import Music from "./Components/Music/Music";
 import Settings from "./Components/Settings/Settings";
-import { DialogsContainer } from "./Components/Dialogs/DialogsContainer";
 import ProfileContainer from "./Components/Content/Main/ProfileContainer";
 import { UsersContainer } from "./Components/Users/UsertsContainer";
+import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 
 function App() {
     return (
