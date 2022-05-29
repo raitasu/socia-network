@@ -11,6 +11,27 @@ let initialState = {
     ],
     textForTextArea: "",
     profile: null,
+    myProfile: {
+        aboutMe: "Creator this application",
+        contacts: {
+            facebook: "",
+            website: null,
+            vk: "https://vk.com/soul1n",
+            twitter: "https://twitter.com/@sdf",
+            instagram: "https://instagram.com/shakesoul",
+            youtube: null,
+            github: "https://github.com/raitasu",
+            mainLink: null,
+        },
+        lookingForAJob: true,
+        lookingForAJobDescription: "",
+        fullName: "Pavel Buryak",
+        userId: 1,
+        photos: {
+            small: "https://cdn1.ozone.ru/s3/multimedia-n/c1200/6193427267.jpg",
+            large: "https://cdn1.ozone.ru/s3/multimedia-n/c1200/6193427267.jpg",
+        },
+    },
 };
 
 export const profileReducer = (state = initialState, action: ActionType) => {

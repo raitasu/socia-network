@@ -67,15 +67,18 @@ const ProfileContainer = () => {
     debugger;
     useEffect(() => {
         if (!userId) {
-            userId = "";
+            userId = "1";
+            dispatch(setUserProfileAC(profilePageState.myProfile));
         }
-        debugger;
         axios
             .get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
-            .then((response) => dispatch(setUserProfileAC(response.data)));
+            .then((response) => {
+                console.log(response.data);
+                dispatch(setUserProfileAC(response.data));
+            });
     }, [userId]);
 
-    return <Main profile={profilePageState.profile} />;
+    return <Main profilePageState={profilePageState} />;
 };
 
 export default ProfileContainer;

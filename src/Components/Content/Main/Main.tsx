@@ -5,13 +5,13 @@ import classes from "./Main.module.css";
 import CreatePostsContainer from "./CreatePosts/CreatePostsContainer";
 
 export type MainType = {
-    profile: any;
+    profilePageState: any;
 };
 const Main = (props: MainType) => {
     return (
         <main className={classes.main}>
             <HeaderLogo />
-            <Form profile={props.profile} />
+            <Form profilePageState={props.profilePageState} />
             <CreatePostsContainer />
         </main>
     );

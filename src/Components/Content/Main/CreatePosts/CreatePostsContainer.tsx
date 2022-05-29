@@ -9,6 +9,7 @@ export type ProfilePageType = {
     posts: Array<PostType>;
     textForTextArea: string;
     profile: any;
+    myProfile: any;
 };
 
 type MapStatePropsType = {

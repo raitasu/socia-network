@@ -19,7 +19,7 @@ function App() {
                 <Sidebar />
                 <div className="page-main">
                     <Routes>
-                        <Route path="/profile/*" element={<ProfileContainer />} />
+                        <Route path="/profile/1" element={<ProfileContainer />} />
                         <Route path="/profile/:userId" element={<ProfileContainer />} />
                         <Route path="dialogs" element={<DialogsContainer />} />
                         <Route path="news" element={<News />} />
