@@ -63,15 +63,17 @@ const ProfileContainer = () => {
 
     let params = useParams();
 
+    let userId = params.userId;
+    debugger;
     useEffect(() => {
-        let userId = params.userId;
         if (!userId) {
             userId = "";
         }
+        debugger;
         axios
             .get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
             .then((response) => setUserProfileAC(response.data));
-    }, []);
+    }, [userId]);
 
     return <Main profile={profilePageState.profile} />;
 };

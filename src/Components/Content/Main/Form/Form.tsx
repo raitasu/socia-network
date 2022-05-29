@@ -7,13 +7,13 @@ export type FormType = {
 };
 const Form = (props: FormType) => {
     if (!props.profile) {
+        debugger;
         return (
             <>
                 <Preloader />
             </>
         );
     }
-
     return (
         <div className={classes.form}>
             <img
