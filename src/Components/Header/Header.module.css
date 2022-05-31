@@ -1,4 +1,7 @@
 .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 20px;
     background-color: dimgray;
     border-radius: 20px;
@@ -7,4 +10,14 @@
 
 .logo img {
     width: 100px;
+}
+
+
+.loginBlock {
+    padding: 10px;
+}
+
+
+.loginLogo {
+    width: 90px;
 }

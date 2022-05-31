@@ -7,7 +7,6 @@ export type FormType = {
 };
 const Form = (props: FormType) => {
     if (!props.profilePageState.profile) {
-        debugger;
         return (
             <>
                 <Preloader />
@@ -47,7 +46,7 @@ const Form = (props: FormType) => {
                     )}
                 </div>
                 <div className={classes.contacts}>
-                    <div className={classes.contactsName}>Contacts : </div>
+                    <div className={classes.contactsName}>Contacts :</div>
                     <div className={classes.item}>
                         <a
                             className={classes.a}

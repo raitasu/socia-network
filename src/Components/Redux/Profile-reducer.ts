@@ -45,7 +45,6 @@ export const profileReducer = (state = initialState, action: ActionType) => {
             return stateCopy;
         }
         case "SET-USER-PROFILE":
-            debugger;
             return { ...state, profile: action.payload.profile };
         default:
             return state;
@@ -66,7 +65,6 @@ export const updateTextForTextAreaAC = (newText: string) => {
     } as const;
 };
 export const setUserProfileAC = (profile: any) => {
-    debugger;
     return {
         type: "SET-USER-PROFILE",
         payload: {
