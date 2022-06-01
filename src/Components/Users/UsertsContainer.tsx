@@ -25,6 +25,7 @@ export const UsersContainer = () => {
         axios
             .get(
                 `https://social-network.samuraijs.com/api/1.0/users?page=${userPageState.currentPage}&count=${userPageState.pageSize}`,
+                { withCredentials: true },
             )
             .then((response) => {
                 dispatch(toggleIsFetchingAC(false));
@@ -39,6 +40,7 @@ export const UsersContainer = () => {
         axios
             .get(
                 `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${userPageState.pageSize}`,
+                { withCredentials: true },
             )
             .then((response) => {
                 dispatch(toggleIsFetchingAC(false));
