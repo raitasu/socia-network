@@ -1,12 +1,13 @@
 import { ActionType } from "./Redux-store";
 import { FriendsType } from "../Users/Users";
 
-let initialState: InitialUsersStateType = {
+export let initialUsersState: InitialUsersStateType = {
     users: [],
     pageSize: 15,
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: true,
+    followingInProgress: [],
 };
 export type InitialUsersStateType = {
     users: Array<FriendsType>;
@@ -14,9 +15,13 @@ export type InitialUsersStateType = {
     totalUsersCount: number;
     currentPage: number;
     isFetching: boolean;
+    followingInProgress: String[];
 };
 
-export const usersReducer = (state = initialState, action: ActionType): InitialUsersStateType => {
+export const usersReducer = (
+    state = initialUsersState,
+    action: ActionType,
+): InitialUsersStateType => {
     switch (action.type) {
         case "SET-USERS":
             return {
@@ -38,6 +43,13 @@ export const usersReducer = (state = initialState, action: ActionType): InitialU
             return {
                 ...state,
                 isFetching: action.payload.isFetching,
+            };
+        case "TOGGLE-IS-FOLLOWING":
+            return {
+                ...state,
+                followingInProgress: action.payload.isFetching
+                    ? [...state.followingInProgress, action.payload.userId]
+                    : state.followingInProgress.filter((id) => id !== action.payload.userId),
             };
         default:
             return state;
@@ -78,6 +90,15 @@ export const toggleIsFetchingAC = (isFetching: boolean) => {
         type: "TOGGLE-IS-FETCHING",
         payload: {
             isFetching: isFetching,
+        },
+    } as const;
+};
+export const toggleIsFollowingAC = (isFetching: boolean, userId: string) => {
+    return {
+        type: "TOGGLE-IS-FOLLOWING",
+        payload: {
+            isFetching: isFetching,
+            userId: userId,
         },
     } as const;
 };

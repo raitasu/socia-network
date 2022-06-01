@@ -11,6 +11,7 @@ import {
     setUsersAC,
     toggleFollowAC,
     toggleIsFetchingAC,
+    toggleIsFollowingAC,
     usersReducer,
 } from "./Users-reducer";
 import authReducer, { setUserDataAC } from "./Auth-reducer";
@@ -33,7 +34,8 @@ export type ActionType =
     | ReturnType<typeof setTotalUsersCountAC>
     | ReturnType<typeof toggleIsFetchingAC>
     | ReturnType<typeof setUserProfileAC>
-    | ReturnType<typeof setUserDataAC>;
+    | ReturnType<typeof setUserDataAC>
+    | ReturnType<typeof toggleIsFollowingAC>;
 
 export type AppStateType = ReturnType<typeof reducers>;
 

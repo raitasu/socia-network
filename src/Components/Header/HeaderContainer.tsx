@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import Header from "./Header";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { AuthStateType, setUserDataAC } from "../Redux/Auth-reducer";
 import { AppStateType } from "../Redux/Redux-store";
+import { usersAPI } from "../../Api/Api";
 
 const HeaderContainer = () => {
     const authState = useSelector<AppStateType, AuthStateType>((state) => state.auth);
@@ -11,16 +11,12 @@ const HeaderContainer = () => {
 
     useEffect(() => {
         setTimeout(() => {
-            axios
-                .get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
-                    withCredentials: true,
-                })
-                .then((response) => {
-                    if (response.data.resultCode === 0) {
-                        let { id, login, email } = response.data.data;
-                        dispatch(setUserDataAC(id, login, email));
-                    }
-                });
+            usersAPI.authMe().then((response) => {
+                if (response.resultCode === 0) {
+                    let { id, login, email } = response.data;
+                    dispatch(setUserDataAC(id, login, email));
+                }
+            });
         }, 3000);
     }, []);
 

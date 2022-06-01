@@ -7,11 +7,12 @@ import {
     setUsersAC,
     toggleFollowAC,
     toggleIsFetchingAC,
+    toggleIsFollowingAC,
 } from "../Redux/Users-reducer";
 import { AppStateType } from "../Redux/Redux-store";
-import axios from "axios";
 import Users from "./Users";
 import Preloader from "../Common/Preloader/Preloader";
+import { usersAPI } from "../../Api/Api";
 
 export const UsersContainer = () => {
     const userPageState = useSelector<AppStateType, InitialUsersStateType>(
@@ -22,30 +23,20 @@ export const UsersContainer = () => {
 
     useEffect(() => {
         dispatch(toggleIsFetchingAC(true));
-        axios
-            .get(
-                `https://social-network.samuraijs.com/api/1.0/users?page=${userPageState.currentPage}&count=${userPageState.pageSize}`,
-                { withCredentials: true },
-            )
-            .then((response) => {
-                dispatch(toggleIsFetchingAC(false));
-                dispatch(setUsersAC(response.data.items));
-                dispatch(setTotalUsersCountAC(response.data.totalCount / 100));
-            });
+        usersAPI.getUsers(userPageState.currentPage, userPageState.pageSize).then((response) => {
+            dispatch(toggleIsFetchingAC(false));
+            dispatch(setUsersAC(response.items));
+            dispatch(setTotalUsersCountAC(response.totalCount / 100));
+        });
     }, []);
     const onPageChanged = (pageNumber: number) => {
         dispatch(setCurrentPageAC(pageNumber));
         dispatch(toggleIsFetchingAC(true));
 
-        axios
-            .get(
-                `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${userPageState.pageSize}`,
-                { withCredentials: true },
-            )
-            .then((response) => {
-                dispatch(toggleIsFetchingAC(false));
-                dispatch(setUsersAC(response.data.items));
-            });
+        usersAPI.getUsers(pageNumber, userPageState.pageSize).then((response) => {
+            dispatch(toggleIsFetchingAC(false));
+            dispatch(setUsersAC(response.items));
+        });
     };
 
     return userPageState.isFetching ? (
@@ -60,6 +51,10 @@ export const UsersContainer = () => {
             toggleFollow={(userID) => {
                 dispatch(toggleFollowAC(userID));
             }}
+            disableFollow={(status: boolean, userId: string) => {
+                dispatch(toggleIsFollowingAC(status, userId));
+            }}
+            followingInProgress={userPageState.followingInProgress}
         />
     );
 };

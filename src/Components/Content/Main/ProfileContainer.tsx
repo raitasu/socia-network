@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import Main from "./Main";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import { setUserProfileAC } from "../../Redux/Profile-reducer";
 import { useDispatch, useSelector } from "react-redux";
 import { AppStateType } from "../../Redux/Redux-store";
 import { ProfilePageType } from "./CreatePosts/CreatePostsContainer";
+import { usersAPI } from "../../../Api/Api";
 
 const ProfileContainer = () => {
     const profilePageState = useSelector<AppStateType, ProfilePageType>(
@@ -20,12 +20,10 @@ const ProfileContainer = () => {
             userId = "1";
             dispatch(setUserProfileAC(profilePageState.myProfile));
         }
-        axios
-            .get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
-            .then((response) => {
-                console.log(response.data);
-                dispatch(setUserProfileAC(response.data));
-            });
+
+        usersAPI.getProfile(userId).then((response) => {
+            dispatch(setUserProfileAC(response));
+        });
     }, [userId]);
 
     return <Main profilePageState={profilePageState} />;
