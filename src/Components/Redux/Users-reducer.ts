@@ -1,5 +1,7 @@
 import { ActionType } from "./Redux-store";
 import { FriendsType } from "../Users/Users";
+import { usersAPI } from "../../Api/Api";
+import { Dispatch } from "redux";
 
 export let initialUsersState: InitialUsersStateType = {
     users: [],
@@ -101,4 +103,37 @@ export const toggleIsFollowingAC = (isFetching: boolean, userId: string) => {
             userId: userId,
         },
     } as const;
+};
+
+export const getUsers = (currentPage: number, pageSize: number): any => {
+    return (dispatch: Dispatch<ActionType>) => {
+        dispatch(toggleIsFetchingAC(true));
+        usersAPI.getUsers(currentPage, pageSize).then((response) => {
+            dispatch(toggleIsFetchingAC(false));
+            dispatch(setUsersAC(response.items));
+            dispatch(setTotalUsersCountAC(response.totalCount / 100));
+        });
+    };
+};
+export const follow = (userId: string): any => {
+    return (dispatch: Dispatch<ActionType>) => {
+        dispatch(toggleIsFollowingAC(true, userId));
+        usersAPI.followUser(userId).then((response) => {
+            if (response.data.resultCode === 0) {
+                dispatch(toggleFollowAC(userId));
+            }
+            dispatch(toggleIsFollowingAC(false, userId));
+        });
+    };
+};
+export const unfollow = (userId: string): any => {
+    return (dispatch: Dispatch<ActionType>) => {
+        dispatch(toggleIsFollowingAC(true, userId));
+        usersAPI.unfollowUser(userId).then((response) => {
+            if (response.data.resultCode === 0) {
+                dispatch(toggleFollowAC(userId));
+            }
+            dispatch(toggleIsFollowingAC(false, userId));
+        });
+    };
 };

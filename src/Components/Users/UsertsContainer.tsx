@@ -1,18 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+    getUsers,
     InitialUsersStateType,
     setCurrentPageAC,
-    setTotalUsersCountAC,
-    setUsersAC,
     toggleFollowAC,
-    toggleIsFetchingAC,
     toggleIsFollowingAC,
 } from "../Redux/Users-reducer";
 import { AppStateType } from "../Redux/Redux-store";
 import Users from "./Users";
 import Preloader from "../Common/Preloader/Preloader";
-import { usersAPI } from "../../Api/Api";
 
 export const UsersContainer = () => {
     const userPageState = useSelector<AppStateType, InitialUsersStateType>(
@@ -22,21 +19,12 @@ export const UsersContainer = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(toggleIsFetchingAC(true));
-        usersAPI.getUsers(userPageState.currentPage, userPageState.pageSize).then((response) => {
-            dispatch(toggleIsFetchingAC(false));
-            dispatch(setUsersAC(response.items));
-            dispatch(setTotalUsersCountAC(response.totalCount / 100));
-        });
+        dispatch(getUsers(userPageState.currentPage, userPageState.pageSize));
     }, []);
     const onPageChanged = (pageNumber: number) => {
         dispatch(setCurrentPageAC(pageNumber));
-        dispatch(toggleIsFetchingAC(true));
 
-        usersAPI.getUsers(pageNumber, userPageState.pageSize).then((response) => {
-            dispatch(toggleIsFetchingAC(false));
-            dispatch(setUsersAC(response.items));
-        });
+        dispatch(getUsers(pageNumber, userPageState.pageSize));
     };
 
     return userPageState.isFetching ? (
@@ -55,6 +43,7 @@ export const UsersContainer = () => {
                 dispatch(toggleIsFollowingAC(status, userId));
             }}
             followingInProgress={userPageState.followingInProgress}
+            dispatch={dispatch}
         />
     );
 };

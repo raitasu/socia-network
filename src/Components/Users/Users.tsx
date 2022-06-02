@@ -2,7 +2,9 @@ import React from "react";
 import classes from "./Users.module.css";
 import avatar from "../Content/MyPosts/Post/avatar-post.png";
 import { NavLink } from "react-router-dom";
-import { usersAPI } from "../../Api/Api";
+import { Dispatch } from "redux";
+import { ActionType } from "../Redux/Redux-store";
+import { follow, unfollow } from "../Redux/Users-reducer";
 
 export type UsersPageType = {
     users: Array<FriendsType>;
@@ -29,6 +31,7 @@ export type UsersType = {
     currentPage: number;
     followingInProgress: String[];
     onPageChanged: (pageNumber: number) => void;
+    dispatch: Dispatch<ActionType>;
 };
 
 const Users = (props: UsersType) => {
@@ -75,13 +78,7 @@ const Users = (props: UsersType) => {
                                             (id) => id === user.id,
                                         )}
                                         onClick={() => {
-                                            props.disableFollow(true, user.id);
-                                            usersAPI.unfollowUser(user.id).then((response) => {
-                                                if (response.data.resultCode === 0) {
-                                                    props.toggleFollow(user.id);
-                                                }
-                                                props.disableFollow(false, user.id);
-                                            });
+                                            props.dispatch(unfollow(user.id));
                                         }}
                                     >
                                         Unfollow
@@ -92,14 +89,7 @@ const Users = (props: UsersType) => {
                                             (id) => id === user.id,
                                         )}
                                         onClick={() => {
-                                            props.disableFollow(true, user.id);
-
-                                            usersAPI.followUser(user.id).then((response) => {
-                                                if (response.data.resultCode === 0) {
-                                                    props.toggleFollow(user.id);
-                                                }
-                                                props.disableFollow(false, user.id);
-                                            });
+                                            props.dispatch(follow(user.id));
                                         }}
                                     >
                                         Follow
