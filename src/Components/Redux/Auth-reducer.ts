@@ -1,4 +1,6 @@
 import { ActionType } from "./Redux-store";
+import { usersAPI } from "../../Api/Api";
+import { Dispatch } from "redux";
 
 const initialState = {
     userId: null,
@@ -38,3 +40,16 @@ export const setUserDataAC = (userId: number, login: string, email: string) => {
 };
 
 export default authReducer;
+
+export const authMe = (): any => {
+    return (dispatch: Dispatch<ActionType>) => {
+        setTimeout(() => {
+            usersAPI.authMe().then((response) => {
+                if (response.resultCode === 0) {
+                    let { id, login, email } = response.data;
+                    dispatch(setUserDataAC(id, login, email));
+                }
+            });
+        }, 3000);
+    };
+};

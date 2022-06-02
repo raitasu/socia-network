@@ -1,5 +1,7 @@
 import { v1 } from "uuid";
 import { ActionType } from "./Redux-store";
+import { Dispatch } from "redux";
+import { usersAPI } from "../../Api/Api";
 
 let initialState = {
     posts: [
@@ -74,3 +76,16 @@ export const setUserProfileAC = (profile: any) => {
 };
 
 export default profileReducer;
+
+export const getProfile = (userId: string | undefined, myProfile: any): any => {
+    return (dispatch: Dispatch<ActionType>) => {
+        if (!userId) {
+            userId = "1";
+            dispatch(setUserProfileAC(myProfile));
+        }
+
+        usersAPI.getProfile(userId).then((response) => {
+            dispatch(setUserProfileAC(response));
+        });
+    };
+};
