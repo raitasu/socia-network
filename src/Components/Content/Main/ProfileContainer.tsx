@@ -5,11 +5,14 @@ import { getProfile } from "../../Redux/Profile-reducer";
 import { useDispatch, useSelector } from "react-redux";
 import { AppStateType } from "../../Redux/Redux-store";
 import { ProfilePageType } from "./CreatePosts/CreatePostsContainer";
+import { AuthStateType } from "../../Redux/Auth-reducer";
 
 const ProfileContainer = () => {
     const profilePageState = useSelector<AppStateType, ProfilePageType>(
         (state) => state.profilePage,
     );
+    const authPageState = useSelector<AppStateType, AuthStateType>((state) => state.auth);
+
     const dispatch = useDispatch();
     let params = useParams();
 
@@ -18,7 +21,7 @@ const ProfileContainer = () => {
         dispatch(getProfile(userId, profilePageState.myProfile));
     }, [userId]);
 
-    return <Main profilePageState={profilePageState} />;
+    return <Main profilePageState={profilePageState} isAuth={authPageState.isAuth} />;
 };
 
 export default ProfileContainer;

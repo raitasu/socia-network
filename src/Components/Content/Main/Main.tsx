@@ -6,12 +6,13 @@ import CreatePostsContainer from "./CreatePosts/CreatePostsContainer";
 
 export type MainType = {
     profilePageState: any;
+    isAuth: boolean;
 };
 const Main = (props: MainType) => {
     return (
         <main className={classes.main}>
             <HeaderLogo />
-            <Form profilePageState={props.profilePageState} />
+            <Form profilePageState={props.profilePageState} isAuth={props.isAuth} />
             <CreatePostsContainer />
         </main>
     );

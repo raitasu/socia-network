@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classes from "./Form.module.css";
 import Preloader from "../../../Common/Preloader/Preloader";
+import { useNavigate } from "react-router-dom";
 
 export type FormType = {
     profilePageState: any;
+    isAuth: boolean;
 };
 const Form = (props: FormType) => {
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (!props.isAuth) {
+            return navigate("/login");
+        }
+    }, [props.isAuth]);
+
     if (!props.profilePageState.profile) {
         return (
             <>

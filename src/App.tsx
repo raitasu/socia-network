@@ -10,6 +10,7 @@ import ProfileContainer from "./Components/Content/Main/ProfileContainer";
 import { UsersContainer } from "./Components/Users/UsertsContainer";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 import HeaderContainer from "./Components/Header/HeaderContainer";
+import Login from "./Components/Login/Login";
 
 function App() {
     return (
@@ -21,11 +22,12 @@ function App() {
                     <Routes>
                         <Route path="/profile/1" element={<ProfileContainer />} />
                         <Route path="/profile/:userId" element={<ProfileContainer />} />
-                        <Route path="dialogs" element={<DialogsContainer />} />
-                        <Route path="news" element={<News />} />
-                        <Route path="music" element={<Music />} />
-                        <Route path="settings" element={<Settings />} />
-                        <Route path="users" element={<UsersContainer />} />
+                        <Route path="/dialogs" element={<DialogsContainer />} />
+                        <Route path="/news" element={<News />} />
+                        <Route path="/music" element={<Music />} />
+                        <Route path="/settings" element={<Settings />} />
+                        <Route path="/users" element={<UsersContainer />} />
+                        <Route path="/login" element={<Login />} />
                     </Routes>
                 </div>
             </div>

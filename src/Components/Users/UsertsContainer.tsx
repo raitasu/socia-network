@@ -10,11 +10,13 @@ import {
 import { AppStateType } from "../Redux/Redux-store";
 import Users from "./Users";
 import Preloader from "../Common/Preloader/Preloader";
+import { AuthStateType } from "../Redux/Auth-reducer";
 
 export const UsersContainer = () => {
     const userPageState = useSelector<AppStateType, InitialUsersStateType>(
         (state) => state.usersPage,
     );
+    const authPageState = useSelector<AppStateType, AuthStateType>((state) => state.auth);
 
     const dispatch = useDispatch();
 
@@ -44,6 +46,7 @@ export const UsersContainer = () => {
             }}
             followingInProgress={userPageState.followingInProgress}
             dispatch={dispatch}
+            isAuth={authPageState.isAuth}
         />
     );
 };
