@@ -1,14 +1,13 @@
 import React, { useEffect } from "react";
 import Main from "./Main";
 import { useParams } from "react-router-dom";
-import { getProfile } from "../../Redux/Profile-reducer";
+import { getProfile, ProfileStateType } from "../../Redux/Profile-reducer";
 import { useDispatch, useSelector } from "react-redux";
 import { AppStateType } from "../../Redux/Redux-store";
-import { ProfilePageType } from "./CreatePosts/CreatePostsContainer";
 import { AuthStateType } from "../../Redux/Auth-reducer";
 
 const ProfileContainer = () => {
-    const profilePageState = useSelector<AppStateType, ProfilePageType>(
+    const profilePageState = useSelector<AppStateType, ProfileStateType>(
         (state) => state.profilePage,
     );
     const authPageState = useSelector<AppStateType, AuthStateType>((state) => state.auth);

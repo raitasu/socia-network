@@ -2,7 +2,7 @@ import React from "react";
 import HeaderLogo from "./HeaderLogo/HeaderLogo";
 import Form from "./Form/Form";
 import classes from "./Main.module.css";
-import CreatePostsContainer from "./CreatePosts/CreatePostsContainer";
+import CreatePosts from "./CreatePosts/CreatePosts";
 
 export type MainType = {
     profilePageState: any;
@@ -13,7 +13,7 @@ const Main = (props: MainType) => {
         <main className={classes.main}>
             <HeaderLogo />
             <Form profilePageState={props.profilePageState} isAuth={props.isAuth} />
-            <CreatePostsContainer />
+            <CreatePosts  />
         </main>
     );
 };

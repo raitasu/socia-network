@@ -2,8 +2,39 @@ import { v1 } from "uuid";
 import { ActionType } from "./Redux-store";
 import { Dispatch } from "redux";
 import { usersAPI } from "../../Api/Api";
+import { PostType } from "../Content/MyPosts/Post/Post";
+type PhotosType = {
+    small: string,
+    large: string,
+}
+type ContactsType = {
+    facebook: string ,
+    website: string,
+    vk: string ,
+    twitter: string ,
+    instagram: string,
+    youtube: string ,
+    github: string ,
+    mainLink: string ,
+}
+export type ProfileType = {
+    aboutMe: string,
+    contacts: ContactsType
+    lookingForAJob: boolean,
+    lookingForAJobDescription: string,
+    fullName: string,
+    userId: number,
+    photos: PhotosType
+}
 
-let initialState = {
+export type ProfileStateType = {
+    posts: PostType[]
+    textForTextArea: string ,
+    profile: ProfileType | null ,
+    myProfile: ProfileType  ,
+}
+
+let InitialProfileState = {
     posts: [
         { id: v1(), message: "Hello, how are you?", amountLike: 10 },
         { id: v1(), message: "What is the best moto?", amountLike: 7 },
@@ -17,13 +48,13 @@ let initialState = {
         aboutMe: "Creator this application",
         contacts: {
             facebook: "",
-            website: null,
+            website: '',
             vk: "https://vk.com/soul1n",
             twitter: "https://twitter.com/@sdf",
             instagram: "https://instagram.com/shakesoul",
-            youtube: null,
+            youtube: '',
             github: "https://github.com/raitasu",
-            mainLink: null,
+            mainLink: '',
         },
         lookingForAJob: true,
         lookingForAJobDescription: "",
@@ -36,7 +67,7 @@ let initialState = {
     },
 };
 
-export const profileReducer = (state = initialState, action: ActionType) => {
+export const profileReducer = (state = InitialProfileState, action: ActionType): ProfileStateType => {
     switch (action.type) {
         case "ADD-POST":
             let newPost = { id: v1(), message: state.textForTextArea, amountLike: 0 };
