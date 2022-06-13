@@ -1,6 +1,5 @@
 import React from "react";
 import classes from "./Music.module.css";
-import { HOC } from "../../Hoc/AuthRedirect";
 
 export const Music = () => {
     return (
@@ -25,4 +24,3 @@ export const Music = () => {
     );
 };
 
-export const MusicRedirectComponent = HOC(<Music />);
