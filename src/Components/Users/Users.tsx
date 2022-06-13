@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import classes from "./Users.module.css";
 import avatar from "../Content/MyPosts/Post/avatar-post.png";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Dispatch } from "redux";
 import { ActionType } from "../Redux/Redux-store";
 import { follow, unfollow } from "../Redux/Users-reducer";
@@ -36,12 +36,6 @@ export type UsersType = {
 };
 
 const Users = (props: UsersType) => {
-    const navigate = useNavigate();
-    useEffect(() => {
-        if (!props.isAuth) {
-            return navigate("/login");
-        }
-    }, [props.isAuth]);
 
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
     let pages = [];

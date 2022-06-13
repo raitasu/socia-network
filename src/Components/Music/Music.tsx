@@ -1,22 +1,28 @@
-import React from 'react';
-import classes from './Music.module.css'
+import React from "react";
+import classes from "./Music.module.css";
+import { HOC } from "../../Hoc/AuthRedirect";
 
-const Music = () => {
+export const Music = () => {
     return (
         <div className={classes.musicTitle}>
-          Music
+            Music
             <div>
-                <audio className={classes.audio} controls={true} >Music</audio>
+                <audio className={classes.audio} controls={true}>
+                    Music
+                </audio>
             </div>
             <div>
-                <audio className={classes.audio} controls={true} >Music</audio>
+                <audio className={classes.audio} controls={true}>
+                    Music
+                </audio>
             </div>
             <div>
-                <audio className={classes.audio} controls={true} >Music</audio>
+                <audio className={classes.audio} controls={true}>
+                    Music
+                </audio>
             </div>
         </div>
-
     );
 };
 
-export default Music;
+export const MusicRedirectComponent = HOC(<Music />);

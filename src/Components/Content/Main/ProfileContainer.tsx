@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Main from "./Main";
 import { useParams } from "react-router-dom";
-import { getProfile, ProfileStateType } from "../../Redux/Profile-reducer";
+import {getProfile, getStatus, ProfileStateType} from "../../Redux/Profile-reducer";
 import { useDispatch, useSelector } from "react-redux";
 import { AppStateType } from "../../Redux/Redux-store";
 import { AuthStateType } from "../../Redux/Auth-reducer";
@@ -18,6 +18,7 @@ const ProfileContainer = () => {
     let userId = params.userId;
     useEffect(() => {
         dispatch(getProfile(userId, profilePageState.myProfile));
+        dispatch(getStatus(userId))
     }, [userId]);
 
     return <Main profilePageState={profilePageState} isAuth={authPageState.isAuth} />;

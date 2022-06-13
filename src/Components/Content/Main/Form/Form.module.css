@@ -4,35 +4,42 @@
     border-radius: 8px;
 
 }
+
 .avatar {
     padding: 20px;
     width: 100px;
     border-radius: 30px;
 }
+
 .description {
     width: 480px;
     padding: 15px;
 }
+
 .itemName {
     font-weight: normal;
     padding-top: 2px;
 }
+
 .fullName {
     font-weight: bold;
     font-size: 30px;
     padding-top: 2px;
-    margin-bottom: 10px;
 }
+
 .contacts {
     display: flex;
     height: 30px;
 }
+
 .item {
     height: 30px;
 }
+
 .contactsName {
     padding-top: 3px;
 }
+
 .itemLogo {
     height: 30px;
     width: 30px;
@@ -40,4 +47,6 @@
 }
 
 
-
+.status {
+    margin-bottom: 10px;
+}

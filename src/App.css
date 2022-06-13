@@ -1,16 +1,16 @@
 .page {
-  width: 1000px;
-  margin: 20px auto;
+    width: 1000px;
+    margin: 20px auto;
 }
 
 .content {
-  display: flex;
+    display: flex;
 
 }
 
 .page-main {
-  width: 680px;
-  padding: 20px;
-  background-color: lightgray;
-  border-radius: 20px;
+    width: 680px;
+    padding: 20px;
+    background-color: lightgray;
+    border-radius: 20px;
 }
