@@ -67,7 +67,7 @@ let InitialProfileState = {
             large: "https://cdn1.ozone.ru/s3/multimedia-n/c1200/6193427267.jpg",
         },
     },
-    status: ''
+    status: '1'
 };
 
 export const profileReducer = (state = InitialProfileState, action: ActionType): ProfileStateType => {
@@ -126,7 +126,7 @@ export default profileReducer;
 export const getProfile = (userId: string | undefined, myProfile: any): any => {
     return (dispatch: Dispatch<ActionType>) => {
         if (!userId) {
-            userId = "1";
+            userId = "23591";
             dispatch(setUserProfileAC(myProfile));
         }
 

@@ -10,7 +10,7 @@ const Sidebar = () => {
                     className={(classActive) =>
                         classActive.isActive ? classes.active : classes.item
                     }
-                    to="/Profile/1"
+                    to="/Profile/23591"
                 >
                     Profile
                 </NavLink>

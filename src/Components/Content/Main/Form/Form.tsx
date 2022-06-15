@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, {useState} from "react";
 import classes from "./Form.module.css";
 import Preloader from "../../../Common/Preloader/Preloader";
 import {useDispatch} from "react-redux";
@@ -10,7 +10,7 @@ export type FormType = {
 };
 const Form = (props: FormType) => {
 
-const dispatch = useDispatch()
+    const dispatch = useDispatch()
     let [status, setStatus] = useState(props.profilePageState.status);
     let [toggle, setToggle] = useState(false);
     console.log(props.profilePageState.status)
@@ -43,8 +43,9 @@ const dispatch = useDispatch()
                         type="text"
                         value={status}
                         onChange={(event) => {
-                            setStatus(event.currentTarget.value);
-
+                            if (props.profilePageState.status !== status) {
+                                setStatus(event.currentTarget.value)
+                            }
                         }}
                         onKeyPress={(event) => {
                             if (event.key === "Enter") {
