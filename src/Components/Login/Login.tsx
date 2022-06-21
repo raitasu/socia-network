@@ -11,12 +11,15 @@ const loginFormSchema = Yup.object({
 });
 
 const Login = () => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch();  // w1 w2
+
+
     return (
         <div className={classes.login}>
+
             <h1>Login</h1>
-            <div style={{color: 'green'}}>email = free@gmail.com </div>
-            <div style={{color: 'green'}}>password = qwerty123 </div>
+            <div style={{color: 'green'}}>email = free@gmail.com</div>
+            <div style={{color: 'green'}}>password = qwerty123</div>
             <Formik
                 initialValues={{email: '', password: '', rememberMe: false}}
                 validationSchema={loginFormSchema}

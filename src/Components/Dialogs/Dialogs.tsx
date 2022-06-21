@@ -4,6 +4,7 @@ import Dialog from "./Dialog";
 import Message from "./Message";
 import { DialogsPageType } from "./DialogsContainer";
 import { useNavigate } from "react-router-dom";
+import AddMessageForm from "./AddMessageForm";
 
 type DialogsPropsType = {
     dialogsPage: DialogsPageType;
@@ -21,13 +22,13 @@ export const Dialogs = (props: DialogsPropsType) => {
         }
     }, [props.isAuth]);
 
-    const onClickHandler = () => {
-        props.addMessage();
-    };
-    const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        let newMessage = e.currentTarget.value;
-        props.updateTextForMessage(newMessage);
-    };
+    // const onClickHandler = () => {
+    //     props.addMessage();
+    // };
+    // const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    //     let newMessage = e.currentTarget.value;
+    //     props.updateTextForMessage(newMessage);
+    // };
 
     return (
         <div>
@@ -39,13 +40,8 @@ export const Dialogs = (props: DialogsPropsType) => {
                     <Message message={props.dialogsPage.message} />
                 </div>
             </div>
-            <div className={classes.addMessage}>
-                <textarea
-                    value={props.dialogsPage.textForMessage}
-                    onChange={onChangeHandler}
-                    placeholder={"Enter new message"}
-                />
-                <button onClick={onClickHandler}>Add message</button>
+            <div >
+                <AddMessageForm/>
             </div>
         </div>
     );
