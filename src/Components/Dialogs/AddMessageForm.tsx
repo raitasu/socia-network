@@ -16,9 +16,10 @@ const dispatch = useDispatch()
             <Formik
                 initialValues={{newMessageBody:''}}
                 validationSchema={loginFormSchema}
-                onSubmit={(values) => {
+                onSubmit={(values:any , {resetForm}) => {
                     dispatch(updateTextForMessageAC(values.newMessageBody))
                     dispatch(addMessageAC())
+                    resetForm({values:''})
                 }}
             >
                 {() => (
