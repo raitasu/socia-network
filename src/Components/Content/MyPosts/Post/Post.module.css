@@ -6,7 +6,7 @@
     background-color: white;
     border-radius: 10px;
 }
-.postImg{
+.postImg {
     width: 80px;
     border-radius: 50px;
     box-shadow: 2px 5px gray;
@@ -21,7 +21,7 @@
     width: 40px;
     padding-top: 30px;
     float: top;
-    }
+}
 
 .like img {
     width: 20px;

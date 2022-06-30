@@ -1,25 +1,22 @@
-import React from 'react';
-import classes from './Dialog.module.css';
-import {NavLink} from "react-router-dom";
-import {UserType} from "./DialogsContainer";
+import React from "react";
+import classes from "./Dialog.module.css";
+import { NavLink } from "react-router-dom";
+import { UserType } from "./DialogsContainer";
 
 type DialogPropsType = {
-    users:Array<UserType>
+    users: Array<UserType>;
+};
 
-}
-
-const Dialog = (props:DialogPropsType) => {
-
+const Dialog = (props: DialogPropsType) => {
     const mapperUsers = props.users.map((el) => {
-        return <div className={classes.item}><NavLink to={"/Dialogs/" + el.id}>{el.name}</NavLink></div>
-    })
+        return (
+            <div className={classes.item}>
+                <NavLink to={"/Dialogs/" + el.id}>{el.name}</NavLink>
+            </div>
+        );
+    });
 
-    return (<>
-            {mapperUsers}
-        </>
-    )
-
-
+    return <>{mapperUsers}</>;
 };
 
 export default Dialog;

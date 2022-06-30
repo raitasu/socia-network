@@ -13,7 +13,7 @@ const Main = (props: MainType) => {
         <main className={classes.main}>
             <HeaderLogo />
             <Form profilePageState={props.profilePageState} isAuth={props.isAuth} />
-            <CreatePosts  />
+            <CreatePosts />
         </main>
     );
 };

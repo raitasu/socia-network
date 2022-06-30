@@ -1,21 +1,17 @@
-import React from 'react';
+import React from "react";
 import classes from "./Dialogs.module.css";
-import {MessageType} from "./DialogsContainer";
+import { MessageType } from "./DialogsContainer";
 
 type MessagePropsType = {
-    message:Array<MessageType>
-}
+    message: Array<MessageType>;
+};
 
-const Message = (props:MessagePropsType) => {
-
+const Message = (props: MessagePropsType) => {
     const mapperMessage = props.message.map((el) => {
-        return <div className={classes.dialog}>{el.message}</div>
-    })
+        return <div className={classes.dialog}>{el.message}</div>;
+    });
 
-    return (<>
-            {mapperMessage}
-        </>
-    );
+    return <>{mapperMessage}</>;
 };
 
 export default Message;

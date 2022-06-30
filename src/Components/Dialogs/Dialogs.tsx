@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect } from "react";
+import React, { useEffect } from "react";
 import classes from "./Dialogs.module.css";
 import Dialog from "./Dialog";
 import Message from "./Message";
@@ -40,8 +40,8 @@ export const Dialogs = (props: DialogsPropsType) => {
                     <Message message={props.dialogsPage.message} />
                 </div>
             </div>
-            <div >
-                <AddMessageForm/>
+            <div>
+                <AddMessageForm />
             </div>
         </div>
     );

@@ -6,7 +6,7 @@
     background-color: white;
     border-radius: 10px;
 }
-.postImg{
+.postImg {
     width: 80px;
     border-radius: 50px;
     box-shadow: 2px 5px gray;
@@ -24,7 +24,6 @@
 }
 
 .selectedPage {
-
     border: 1px solid black;
     background-color: gainsboro;
     border-radius: 5px;

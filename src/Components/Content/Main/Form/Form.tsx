@@ -1,23 +1,22 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import classes from "./Form.module.css";
 import Preloader from "../../../Common/Preloader/Preloader";
-import {useDispatch} from "react-redux";
-import {updateStatus} from "../../../Redux/Profile-reducer";
+import { useDispatch } from "react-redux";
+import { updateStatus } from "../../../Redux/Profile-reducer";
 
 export type FormType = {
     profilePageState: any;
     isAuth: boolean;
 };
 const Form = (props: FormType) => {
-
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     let [status, setStatus] = useState(props.profilePageState.status);
     let [toggle, setToggle] = useState(false);
-    console.log(props.profilePageState.status)
+    console.log(props.profilePageState.status);
     if (!props.profilePageState.profile) {
         return (
             <>
-                <Preloader/>
+                <Preloader />
             </>
         );
     }
@@ -44,19 +43,18 @@ const Form = (props: FormType) => {
                         value={status}
                         onChange={(event) => {
                             if (props.profilePageState.status !== status) {
-                                setStatus(event.currentTarget.value)
+                                setStatus(event.currentTarget.value);
                             }
                         }}
                         onKeyPress={(event) => {
                             if (event.key === "Enter") {
                                 setToggle(false);
-                                dispatch(updateStatus(status))
+                                dispatch(updateStatus(status));
                             }
                         }}
                         onBlur={() => {
-
                             setToggle(false);
-                            dispatch(updateStatus(status))
+                            dispatch(updateStatus(status));
                         }}
                     />
                 ) : (
@@ -66,9 +64,7 @@ const Form = (props: FormType) => {
                             setToggle(true);
                         }}
                     >
-                        {
-
-                            props.profilePageState.status}
+                        {props.profilePageState.status}
                     </div>
                 )}
                 <div className={classes.aboutMe}>
@@ -80,9 +76,9 @@ const Form = (props: FormType) => {
                 <div className={classes.itemName}>
                     Looking for a job :{" "}
                     {props.profilePageState.profile.lookingForAJob ? (
-                        <input type="checkbox" checked={true}/>
+                        <input type="checkbox" checked={true} />
                     ) : (
-                        <input type="checkbox" checked={false}/>
+                        <input type="checkbox" checked={false} />
                     )}
                 </div>
                 <div className={classes.contacts}>

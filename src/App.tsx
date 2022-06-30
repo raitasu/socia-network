@@ -10,7 +10,7 @@ import { UsersContainer } from "./Components/Users/UsertsContainer";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 import HeaderContainer from "./Components/Header/HeaderContainer";
 import Login from "./Components/Login/Login";
-import { Music} from "./Components/Music/Music";
+import { Music } from "./Components/Music/Music";
 
 function App() {
     return (
@@ -21,7 +21,7 @@ function App() {
                 <div className="page-main">
                     <Routes>
                         <Route path="/profile/:userId" element={<ProfileContainer />} />
-                        <Route path="/" element={<Login/>} />
+                        <Route path="/" element={<Login />} />
                         <Route path="/dialogs" element={<DialogsContainer />} />
                         <Route path="/news" element={<News />} />
                         <Route path="/music" element={<Music />} />

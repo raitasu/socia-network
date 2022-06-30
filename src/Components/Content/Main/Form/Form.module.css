@@ -2,7 +2,6 @@
     display: flex;
     border: 2px solid black;
     border-radius: 8px;
-
 }
 
 .avatar {
@@ -45,7 +44,6 @@
     width: 30px;
     padding: 1px;
 }
-
 
 .status {
     margin-bottom: 10px;

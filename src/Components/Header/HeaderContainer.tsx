@@ -7,7 +7,6 @@ import { AppStateType } from "../Redux/Redux-store";
 const HeaderContainer = () => {
     const authState = useSelector<AppStateType, AuthStateType>((state) => state.auth);
 
-
     return <Header login={authState.login} isAuth={authState.isAuth} />;
 };
 
